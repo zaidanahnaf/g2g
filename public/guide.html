@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Budidaya Jamur - G2G</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Grounds2Gourmet</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="offer-coffee.html">Tawarkan Ampas</a></li>
+                    <li><a href="list-offers.html">Daftar Ampas</a></li>
+                    <li><a href="guide.html" class="active">Panduan Budidaya</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="guide-page">
+        <section class="hero-section guide-hero">
+            <div class="container">
+                <h1>Panduan Budidaya Jamur Gourmet</h1>
+                <p>Ikuti langkah-langkah mudah ini untuk mengubah ampas kopi menjadi jamur lezat di rumah!</p>
+            </div>
+        </section>
+
+        <section class="guide-progress container">
+            <h2>Progres Belajar Anda</h2>
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <p class="progress-status">
+                <span id="currentProgressText">0 dari 3 langkah selesai.</span>
+            </p>
+        </section>
+
+        <section class="guide-steps container">
+            <div class="guide-step">
+                <div class="step-header">
+                    <span class="step-number">01</span>
+                    <h3>Persiapan Ampas Kopi</h3>
+                </div>
+                <div class="step-content">
+                    <img src="assets/images/guide-step1-prep.png" alt="Persiapan Ampas Kopi" class="guide-illustration">
+                    <p>Kumpulkan ampas kopi dari rumah atau kafe. Pastikan ampas kopi relatif segar dan tidak berjamur. Jemur atau keringkan sebentar untuk mengurangi kadar air, namun jangan sampai terlalu kering.</p>
+                    <label class="step-checkbox-label">
+                        <input type="checkbox" id="step1Completed" data-step="step1Completed">
+                        Saya sudah menyelesaikan langkah ini!
+                    </label>
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-header">
+                    <span class="step-number">02</span>
+                    <h3>Sterilisasi Media & Pencampuran Bibit</h3>
+                </div>
+                <div class="step-content">
+                    <img src="assets/images/guide-step2-sterilize.png" alt="Sterilisasi Media" class="guide-illustration">
+                    <p>Campurkan ampas kopi dengan sedikit kapur pertanian atau gipsum jika ada. Sterilkan media tanam ini (misalnya, dengan dikukus atau direbus singkat) untuk membunuh kontaminan. Setelah dingin, campurkan bibit jamur (spawn) secara merata.</p>
+                    <label class="step-checkbox-label">
+                        <input type="checkbox" id="step2Completed" data-step="step2Completed">
+                        Saya sudah menyelesaikan langkah ini!
+                    </label>
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-header">
+                    <span class="step-number">03</span>
+                    <h3>Inokulasi & Perawatan Awal</h3>
+                </div>
+                <div class="step-content">
+                    <img src="assets/images/guide-step3-care.png" alt="Inokulasi & Perawatan" class="guide-illustration">
+                    <p>Masukkan media yang sudah dicampur bibit ke dalam kantong plastik tahan panas atau wadah transparan. Tempatkan di tempat yang gelap, lembap, dan hangat. Biarkan miselium jamur tumbuh memenuhi media (biasanya 2-4 minggu).</p>
+                    <label class="step-checkbox-label">
+                        <input type="checkbox" id="step3Completed" data-step="step3Completed">
+                        Saya sudah menyelesaikan langkah ini!
+                    </label>
+                </div>
+            </div>
+
+            </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Grounds2Gourmet. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><img src="assets/icons/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="assets/icons/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/guideLogic.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        // JavaScript untuk inisialisasi dan interaksi panduan
+        import { updateStepCompletion, getGuideProgress } from './js/guideLogic.js';
+
+        const stepCheckboxes = {
+            step1Completed: document.getElementById('step1Completed'),
+            step2Completed: document.getElementById('step2Completed'),
+            step3Completed: document.getElementById('step3Completed')
+        };
+        const progressBar = document.getElementById('progressBar');
+        const currentProgressText = document.getElementById('currentProgressText');
+        const totalSteps = Object.keys(stepCheckboxes).length; // Akan menjadi 3
+
+        // Fungsi untuk memuat status awal dan memperbarui UI
+        function initializeGuide() {
+            const progress = getGuideProgress(); // Ambil progres dari localStorage via guideLogic
+            for (const step in stepCheckboxes) {
+                if (stepCheckboxes[step]) { // Pastikan elemen ada
+                    stepCheckboxes[step].checked = progress[step] || false;
+                    stepCheckboxes[step].addEventListener('change', (event) => {
+                        updateStepCompletion(event.target.dataset.step, event.target.checked);
+                        updateProgressBar();
+                    });
+                }
+            }
+            updateProgressBar();
+            console.log('Guide initialized with progress:', progress);
+        }
+
+        // Fungsi untuk memperbarui progress bar dan teks status
+        function updateProgressBar() {
+            const progress = getGuideProgress();
+            const completedSteps = Object.values(progress).filter(value => value === true).length;
+            const percentage = (completedSteps / totalSteps) * 100;
+
+            if (progressBar) {
+                progressBar.style.width = `${percentage}%`;
+            }
+            if (currentProgressText) {
+                currentProgressText.textContent = `${completedSteps} dari ${totalSteps} langkah selesai.`;
+            }
+        }
+
+        // Panggil inisialisasi saat DOM dimuat
+        document.addEventListener('DOMContentLoaded', initializeGuide);
+    </script>
+</body>
+</html>

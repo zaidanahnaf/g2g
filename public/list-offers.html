@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Penawaran Ampas Kopi - G2G</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Grounds2Gourmet</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="offer-coffee.html">Tawarkan Ampas</a></li>
+                    <li><a href="list-offers.html" class="active">Daftar Ampas</a></li>
+                    <li><a href="guide.html">Panduan Budidaya</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="list-page">
+        <section class="hero-section list-hero">
+            <div class="container">
+                <h1>Daftar Penawaran Ampas Kopi</h1>
+                <p>Temukan sumber ampas kopi terdekat untuk memulai budidaya jamur Anda.</p>
+                </div>
+        </section>
+
+        <section class="offers-grid-container container">
+            <div id="offersList" class="offers-grid">
+                <p class="loading-message">Memuat daftar penawaran...</p>
+                </div>
+            <p id="noOffersMessage" style="display:none; text-align: center; margin-top: 20px;">Belum ada penawaran ampas kopi saat ini.</p>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Grounds2Gourmet. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><img src="assets/icons/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="assets/icons/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/offerLogic.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        // JavaScript untuk memuat dan menampilkan daftar penawaran
+        import { getAllCoffeeOffers } from './js/offerLogic.js';
+
+        const offersListContainer = document.getElementById('offersList');
+        const noOffersMessage = document.getElementById('noOffersMessage');
+
+        function displayOffers() {
+            const offers = getAllCoffeeOffers();
+            offersListContainer.innerHTML = ''; // Kosongkan kontainer sebelum mengisi
+
+            if (offers.length === 0) {
+                noOffersMessage.style.display = 'block';
+                offersListContainer.style.display = 'none'; // Sembunyikan grid jika tidak ada tawaran
+            } else {
+                noOffersMessage.style.display = 'none';
+                offersListContainer.style.display = 'grid'; // Tampilkan grid jika ada tawaran
+                offers.forEach(offer => {
+                    const offerCard = document.createElement('div');
+                    offerCard.className = 'offer-card';
+                    offerCard.innerHTML = `
+                        <img src="assets/images/coffee-grounds-placeholder.png" alt="Ampas Kopi">
+                        <h3>${offer.name} (${offer.type})</h3>
+                        <p>Area: ${offer.area}</p>
+                        <p>Jumlah: ${offer.amount}</p>
+                        <p class="date-added">Ditambahkan: ${offer.dateAdded}</p>
+                        <button class="button secondary contact-button" data-contact="${offer.contact}">Hubungi</button>
+                    `;
+                    offersListContainer.appendChild(offerCard);
+                });
+
+                // Tambahkan event listener untuk tombol hubungi
+                document.querySelectorAll('.contact-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const contact = this.dataset.contact;
+                        alert(`Silakan hubungi penyedia: ${contact}`);
+                    });
+                });
+            }
+            console.log('Offers displayed:', offers);
+        }
+
+        // Panggil displayOffers saat DOM selesai dimuat
+        document.addEventListener('DOMContentLoaded', displayOffers);
+    </script>
+</body>
+</html>
