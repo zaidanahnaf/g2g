@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <style>
+        /* Additional styles specific for login page */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background: #fff;
+        }
+        .login-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+        .login-left {
+            width: 50%;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            box-sizing: border-box;
+            /* align-items: center; */
+            /* text-align: center; */
+        }
+        .login-left h1 {
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .login-left p {
+            font-weight: 400;
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 32px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            max-width: 320px;
+        }
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #222;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px 14px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #3a8e2f;
+        }
+        button {
+            background-color: #2e7d32;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 12px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #27632a;
+        }
+        .login-right {
+            width: 50%;
+            background: url('assets/images/login.png') no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.7) saturate(1.2);
+        }
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+            .login-left, .login-right {
+                max-width: 100%;
+                width: 100%;
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <h1>Selamat Datang !!!</h1>
+            <p>Bersama Menjaga Bumi, 
+                Demi Masa Depan Kita.</p>
+            <form>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username" required />
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="login-right"></div>
+    </div>
+</body>
+</html>
