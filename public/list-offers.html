@@ -32,7 +32,7 @@
         <!-- Section Breadcrumbs -->
         <section class="breadcrumbs-section">
             <div class="container breadcrumbs">
-                <span><a href="dashboard.html">Dashboard</a></span>
+                <span><a href="index.html">Beranda</a></span>
                 <span>&gt;</span>
                 <span>Lihat Daftar Ampas</span>
             </div>
@@ -106,7 +106,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Grounds2Gourmet All Right Reserved. Didesain oleh G2G Team.</p>
+            <p>&copy; 2025 Grounds2Gourmet All Right Reserved. Didesain oleh Tim Doa Ayah.</p>
         </div>
     </footer>
 
@@ -139,13 +139,13 @@
                     const offerCard = document.createElement('div');
                     offerCard.className = 'offer-card';
                     offerCard.innerHTML = `
-                        <!-- PASTIKAN PATH GAMBAR INI BENAR SESUAI LOKASI FILE ANDA -->
                         <img src="assets/images/AmpasKopiMenumpuk.png" alt="Ampas Kopi dari ${offer.name}" class="offer-image" />
                         <div class="offer-details">
                             <span class="offer-name">${offer.name}</span>
                             <span class="offer-type">${offer.type}</span>
                             <p class="offer-address">${offer.area}</p>
                             <p class="offer-quantity">${offer.amount}</p>
+                            <!-- Pastikan data-contact berisi nomor yang bersih, tanpa spasi atau tanda hubung -->
                             <button class="button primary contact-offer-button" data-contact="${offer.contact}">Hubungi</button>
                         </div>
                     `;
@@ -155,8 +155,23 @@
                 // Tambahkan event listener untuk tombol hubungi
                 document.querySelectorAll('.contact-offer-button').forEach(button => {
                     button.addEventListener('click', function() {
-                        const contact = this.dataset.contact;
-                        alert(`Silakan hubungi penyedia: ${contact}`);
+                        const contactNumber = this.dataset.contact;
+                        // Bersihkan nomor telepon: hapus spasi, tanda hubung, kurung, dll.
+                        // Ganti '0' di awal dengan '62' (kode negara Indonesia) jika formatnya lokal
+                        let cleanedNumber = contactNumber.replace(/\D/g, ''); // Hanya tinggalkan digit
+                        if (cleanedNumber.startsWith('0')) {
+                            cleanedNumber = '62' + cleanedNumber.substring(1);
+                        } else if (!cleanedNumber.startsWith('62')) {
+                            // Asumsi jika tidak dimulai 0 atau 62, sudah format internasional
+                            // Atau bisa tambahkan logika validasi lebih ketat
+                        }
+                        
+                        // Konstruksi URL WhatsApp
+                        const whatsappUrl = `https://wa.me/${cleanedNumber}`;
+                        
+                        // Redirect browser ke URL WhatsApp
+                        window.open(whatsappUrl, '_blank'); // Buka di tab baru
+                        console.log(`Redirecting to WhatsApp: ${whatsappUrl}`); // Untuk debugging
                     });
                 });
             }

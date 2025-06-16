@@ -9,13 +9,20 @@ export function addCoffeeOffer(offerData) {
         return null; // Mengembalikan null jika validasi gagal
     }
 
+    // let cleanedContact = offerData.contact.replace(/\D/g, '');
+    // if (cleanedContact.startsWith('0')) {
+    //     cleanedContact = '62' + cleanedContact.substring(1);
+    // } else if (!cleanedContact.startsWith('62') && cleanedContact.length > 5) { // Asumsi jika tidak dimulai 0/62 dan cukup panjang, anggap internasional
+    //     // Bisa tambahkan logika untuk kode negara default jika diperlukan
+    // }
+
     const newOffer = {
         id: 'o' + (coffeeGroundOffers.length + 1).toString().padStart(3, '0'), // ID sederhana
         name: offerData.name,
         type: offerData.type,
         area: offerData.area,
         amount: offerData.amount,
-        contact: offerData.contact,
+        contact: offerData.contact, // Asumsi sudah dalam format yang benar
         dateAdded: new Date().toISOString().split('T')[0] // Tanggal penambahan otomatis
     };
     coffeeGroundOffers.push(newOffer);

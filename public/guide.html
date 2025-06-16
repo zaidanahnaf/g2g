@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panduan Budidaya Jamur - Grounds2Gourmet</title>
+    <!-- Hanya satu file CSS yang di-link -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- HEADER UTAMA (Copy-paste dari index.html untuk konsistensi) -->
+    <header class="alt-header">
+        <nav class="navbar container">
+            <div class="navbar-left">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <!-- Section Navigasi Pills -->
+        <section class="top-nav-pills-section">
+            <div class="container page-nav-pills-container">
+                <a href="offer-coffee.html" class="pill-nav-item">Tawarkan Ampas</a>
+                <a href="list-offers.html" class="pill-nav-item">Lihat Daftar Ampas</a>
+                <a href="guide.html" class="pill-nav-item active">Panduan Budidaya</a>
+            </div>
+        </section>
+
+        <!-- Section Breadcrumbs -->
+        <section class="breadcrumbs-section">
+            <div class="container breadcrumbs">
+                <span><a href="index.html">Beranda</a></span>
+                <span>&gt;</span>
+                <span>Panduan Budidaya</span>
+            </div>
+        </section>
+        
+        <!-- Main Guide Section -->
+        <section class="guide-main-section container">
+            <div class="guide-container">
+                <h1 class="guide-page-title">Panduan Budidaya Jamur Gourmet</h1>
+                <p class="guide-page-subtitle">Ikuti langkah-langkah mudah ini untuk mengubah ampas kopi menjadi jamur lezat di rumah!</p>
+                
+                <div class="guide-progress-block">
+                    <h2>Progres Belajar Anda</h2>
+                    <div class="progress-bar-container">
+                        <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <p class="progress-status">
+                        <span id="currentProgressText">0 dari 3 langkah selesai.</span>
+                    </p>
+                    <!-- Pastikan mushroom-cartoon.png ada di public/assets/images/ -->
+                    <img src="assets/images/IlustrasiJamur.png" alt="Jamur Kartun" class="mushroom-cartoon">
+                </div>
+
+                <div class="guide-steps-wrapper">
+                    <!-- STEP 1 -->
+                    <div class="guide-step">
+                        <div class="step-header">
+                            <span class="step-number">01</span>
+                            <h3>Persiapan Ampas Kopi</h3>
+                        </div>
+                        <div class="step-content">
+                            <!-- Pastikan guide-step1-prep.png ada di public/assets/images/ -->
+                            <img src="assets/images/AmpasKopiMenumpuk.png" alt="Persiapan Ampas Kopi" class="guide-illustration">
+                            <p>Kumpulkan ampas kopi dari rumah atau kafe. Pastikan ampas kopi relatif segar dan tidak berjamur. Jemur atau keringkan sebentar untuk mengurangi kadar air, namun jangan sampai terlalu kering.</p>
+                            <label class="step-checkbox-label">
+                                <input type="checkbox" id="step1Completed" data-step="step1Completed">
+                                Saya sudah menyelesaikan langkah ini!
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="guide-step">
+                        <div class="step-header">
+                            <span class="step-number">02</span>
+                            <h3>Sterilisasi Media & Pencampuran Bibit</h3>
+                        </div>
+                        <div class="step-content">
+                            <!-- Pastikan guide-step2-sterilize.png ada di public/assets/images/ -->
+                            <img src="assets/images/tanam.jpg" alt="Sterilisasi Media" class="guide-illustration">
+                            <p>Panaskan ampas kopi (kukus atau oven) untuk membunuh mikroorganisme. Setelah dingin, campurkan dengan bibit jamur (spawn) dalam wadah bersih.</p>
+                            <label class="step-checkbox-label">
+                                <input type="checkbox" id="step2Completed" data-step="step2Completed">
+                                Saya sudah menyelesaikan langkah ini!
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="guide-step">
+                        <div class="step-header">
+                            <span class="step-number">03</span>
+                            <h3>Inokulasi & Perawatan Awal</h3>
+                        </div>
+                        <div class="step-content">
+                            <!-- Pastikan guide-step3-care.png ada di public/assets/images/ -->
+                            <img src="assets/images/menanam.jpg" alt="Inokulasi & Perawatan" class="guide-illustration">
+                            <p>Simpan media dalam tempat lembap dan tidak terkena sinar langsung. Tunggu miselium tumbuh (berwarna putih seperti kapas), lalu pindahkan ke ruang pertumbuhan.</p>
+                            <label class="step-checkbox-label">
+                                <input type="checkbox" id="step3Completed" data-step="step3Completed">
+                                Saya sudah menyelesaikan langkah ini!
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Tips & Trik Budidaya Jamur -->
+        <section class="tips-budidaya-section">
+            <div class="tips-budidaya-container">
+                <div class="tips-header">
+                    <span class="label-tips">TIPS & TRIK BUDIDAYA JAMUR</span>
+                </div>
+                <div class="tips-grid">
+                    <div class="tip-item">
+                        <span class="tip-number">01</span>
+                        <h3>Jaga Kelembaban, Bukan Basah</h3>
+                        <p>Gunakan semprotan kabut (sprayer) 1-2 kali sehari. Jangan menyiram langsung agar jamur tidak busuk.</p>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">02</span>
+                        <h3>Perhatikan Suhu & Sirkulasi</h3>
+                        <p>Suhu ideal berkisar 20-25°C. Ruangan harus teduh dan memiliki sirkulasi udara baik untuk mencegah jamur liar tumbuh.</p>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">03</span>
+                        <h3>Gunakan Sarung Tangan & Masker</h3>
+                        <p>Saat mencampur media dan spawn, gunakan alat pelindung untuk menjaga sterilitas dan kesehatan Anda.</p>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">04</span>
+                        <h3>Cegah Kontaminasi</h3>
+                        <p>Jika muncul jamur berwarna aneh (hijau, merah muda, hitam), segera pisahkan media tersebut agar tidak menyebar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER UTAMA (Copy-paste dari index.html untuk konsistensi) -->
+    <footer class="main-footer">
+        <div class="container footer-grid-container">
+            <!-- Bagian 1: Logo & Deskripsi Singkat -->
+            <div class="footer-section footer-brand-info">
+                <a href="index.html" class="footer-logo-link">
+                    <!-- Pastikan Logo.png ada di public/assets/images/ -->
+                    <img src="assets/images/LogoG2G2.svg" alt="G2G Logo" class="footer-logo" />
+                    <!-- <span class="footer-brand-name">Grounds2Gourmet</span> -->
+                </a>
+                <p class="brand-tagline">"Jamur yang Tumbuh dari Sisa, Bukan dari Sia-Sia."</p>
+                <p class="brand-description">Platform inovatif untuk mengubah ampas kopi menjadi sumber daya berharga, mendukung urban farming dan ekonomi sirkular.</p>
+            </div>
+
+            <!-- Bagian 2: Navigasi Cepat -->
+            <div class="footer-section footer-quick-links">
+                <h3>Jelajahi G2G</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="#why-g2g">Tentang</a></li>
+                    <li><a href="#fitur-utama">Fitur</a></li>
+                    <li><a href="#cara-kerja-g2g">Cara Kerja</a></li> <!-- Contoh link ke section di halaman utama -->
+                </ul>
+            </div>
+
+            <!-- Bagian 3: Hubungi Kami (sudah ada) -->
+            <div class="footer-section get-in-touch">
+                <h3>Hubungi Kami</h3>
+                <p>
+                    <!-- Pastikan MapsFooter.png ada di public/assets/icons/ -->
+                    <img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/> 
+                    Singaperbangsa Karawang, Indonesia
+                </p>
+                <p>
+                    <!-- Pastikan MailFooter.png ada di public/assets/icons/ -->
+                    <img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/> 
+                    edufairhimsika@gmail.com
+                </p>
+                <div class="social-icons">
+                    <!-- Pastikan ikon-ikon ini ada di public/assets/icons/ -->
+                    <a href="https://twitter.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
+                    <a href="https://facebook.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
+                    <a href="https://instagram.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
+                    <a href="https://linkedin.com/company/edufair.himsika" target="_blank"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
+                    <a href="https://youtube.com/user/edufair.himsika" target="_blank"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Grounds2Gourmet All Right Reserved. Didesain oleh Tim Doa Ayah.</p>
+        </div>
+    </footer>
+
+    <!-- Impor JavaScript files -->
+    <script type="module" src="js/guideLogic.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        // JavaScript untuk inisialisasi dan interaksi panduan
+        import { updateStepCompletion, getGuideProgress } from './js/guideLogic.js';
+
+        const stepCheckboxes = {
+            step1Completed: document.getElementById('step1Completed'),
+            step2Completed: document.getElementById('step2Completed'),
+            step3Completed: document.getElementById('step3Completed')
+        };
+        const progressBar = document.getElementById('progressBar');
+        const currentProgressText = document.getElementById('currentProgressText');
+        const totalSteps = Object.keys(stepCheckboxes).length; // Akan menjadi 3
+
+        // Fungsi untuk memuat status awal dan memperbarui UI
+        function initializeGuide() {
+            const progress = getGuideProgress(); // Ambil progres dari localStorage via guideLogic
+            for (const step in stepCheckboxes) {
+                if (stepCheckboxes[step]) { // Pastikan elemen ada
+                    stepCheckboxes[step].checked = progress[step] || false;
+                    stepCheckboxes[step].addEventListener('change', (event) => {
+                        updateStepCompletion(event.target.dataset.step, event.target.checked);
+                        updateProgressBar();
+                    });
+                }
+            }
+            updateProgressBar();
+            console.log('Guide initialized with progress:', progress);
+        }
+
+        // Fungsi untuk memperbarui progress bar dan teks status
+        function updateProgressBar() {
+            const progress = getGuideProgress();
+            const completedSteps = Object.values(progress).filter(value => value === true).length;
+            const percentage = (completedSteps / totalSteps) * 100;
+
+            if (progressBar) {
+                progressBar.style.width = `${percentage}%`;
+            }
+            if (currentProgressText) {
+                currentProgressText.textContent = `${completedSteps} dari ${totalSteps} langkah selesai.`;
+            }
+        }
+
+        // Panggil inisialisasi saat DOM dimuat
+        document.addEventListener('DOMContentLoaded', initializeGuide);
+    </script>
+</body>
+</html>

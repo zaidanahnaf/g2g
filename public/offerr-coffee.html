@@ -2,129 +2,278 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Grounds2Gourmet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tawarkan Ampas Kopi - Grounds2Gourmet</title>
+    <!-- Hanya satu file CSS yang di-link -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar">
+    <!-- HEADER UTAMA (Copy-paste dari index.html untuk konsistensi) -->
+    <header class="alt-header">
+        <nav class="navbar container">
             <div class="navbar-left">
-                <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
+                </a>
             </div>
-            <ul class="navbar-center">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Tawarkan Ampas</a></li>
-                <li><a href="#">Lihat Daftar Ampas</a></li>
-                <li><a href="#">Panduan Budidaya</a></li>
-
-            </ul>
-<div class="navbar-right">
-    <a href="login.html" class="btn btn-login">Masuk</a>
-</div>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>UBAH SISA KOPI MENJADI SUMBER KEHIDUPAN BARU<span class="dot">.</span></h1>
-            <p>GROUNDS2GOURMET MENGHUBUNGKAN PENYUMBANG AMPAS KOPI DENGAN CALON PETANI JAMUR UNTUK MENCIPTAKAN PERTANIAN BERKELANJUTAN DARI LIMBAH RUMAH TANGGA.</p>
-            <a href="login.html" class="btn btn-primary">Mulai Gunakan G2G Sekarang !!</a>
-        </div>
-    </section>
-
-    
-<div class="offer-ampas-section">
-    <div class="breadcrumb">
-        <span>Dashboard</span> <img src="assets/icons/ArrowGreen.png" alt=">" /> <span>Tawarkan Ampas</span> <img src="assets/icons/ArrowGrey.png" alt=">" />
-    </div>
-    <div class="offer-ampas-heading">
-        <h1>ISI FORM TERLEBIH DAHULU UNTUK MENAWARKAN AMPAS</h1>
-    </div>
-</div>
-        <div class="offer-ampas-heading">
-            <h1>ISI FORM TERLEBIH DAHULU UNTUK MENAWARKAN AMPAS</h1>
-        </div>
-        </div>
-
-        <section class="offer-form-section">
-    <div class="offer-form-container">
-        <h2 class="form-title">Silahkan isi formulir berikut untuk menawarkan Ampas Anda</h2>
-        <p class="form-subtitle">isi semua biodata ini ya !!!</p>
-        <div class="form-content-wrapper">
-            <div class="form-image">
-                <img src="assets/images/bapak.jpg" alt="Barista with coffee" />
+    <main class="form-page-content">
+        <!-- Section Navigasi Pills -->
+        <section class="top-nav-pills-section">
+            <div class="container page-nav-pills-container">
+                <a href="offer-coffee.html" class="pill-nav-item active">Tawarkan Ampas</a>
+                <a href="list-offers.html" class="pill-nav-item">Lihat Daftar Ampas</a>
+                <a href="guide.html" class="pill-nav-item">Panduan Budidaya</a>
             </div>
-            <div class="form-fields">
-                <div class="form-group">
-                    <label for="name">Nama</label>
-                    <input type="text" id="name" placeholder="Masukkan nama" />
-                </div>
-                <div class="form-group">
-    <label for="location-type">Jenis Lokasi</label>
-    <div class="select-wrapper">
-        <select id="location-type">
-            <option value="" disabled selected hidden>Pilih Jenis Lokasi</option> <option value="kafe">Kafe</option>
-            <option value="rumah">Rumah</option>
-        </select>
-        <img src="assets/icons/ArrowGreen.png" alt="dropdown arrow" class="dropdown-arrow">
-    </div>
-</div>
-                <div class="form-group">
-                    <label for="contact-number">Masukkan No Kontak</label>
-                    <input type="text" id="contact-number" placeholder="08..." />
-                </div>
-                <div class="form-group">
-                    <label for="ampas-quantity">Jumlah Ampas</label>
-                    <input type="text" id="ampas-quantity" placeholder="15 kg" />
-                </div>
-                <div class="form-group">
-                    <label for="address">Alamat</label>
-                    <textarea id="address" placeholder="Masukkan alamat lengkap"></textarea>
-                </div>
-                <button type="submit" class="btn-simpan">SIMPAN</button>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-      <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section get-in-touch">
-                <h3>Get in Touch</h3>
-                <p><img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/> Jakarta, Indonesia</p>
-                <p><img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/> panaceamed.id@gmail.com</p>
-                <div class="social-icons">
-                    <a href="#"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
+        <!-- Section Breadcrumbs -->
+        <section class="breadcrumbs-section">
+            <div class="container breadcrumbs">
+                <span><a href="dashboard.html">Dashboard</a></span>
+                <span>&gt;</span>
+                <span>Tawarkan Ampas</span>
+            </div>
+        </section>
+
+        <!-- Section Formulir Utama -->
+        <section class="offer-form-section container">
+            <!-- Ini adalah Container Utama untuk Gambar dan Form, yang akan di-flex -->
+            <div class="form-card-wrapper">
+                <div class="form-image-container">
+                    <!-- Pastikan barista.jpg ada di public/assets/images/ -->
+                    <img src="assets/images/barista.jpg" alt="Gambar Ilustrasi Barista" class="form-image">
+                </div>
+                
+                <div class="form-content-block">
+                    <h2 class="form-title">ISI FORM TERLEBIH DAHULU UNTUK MENAWARKAN AMPAS</h2>
+                    <p class="form-subtitle">Silakan isi formulir berikut untuk menawarkan Ampas Anda</p>
+                    <p class="form-instruction">Isi semua biodata ini ya!!!</p>
+
+                    <form id="offerForm" class="g2g-form">
+                        <div class="form-group">
+                            <label for="offerName">Nama:</label>
+                            <input type="text" id="offerName" name="offerName" placeholder="Masukkan nama" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offerType">Jenis Lokasi:</label>
+                            <select id="offerType" name="offerType" required>
+                                <option value="">Pilih Jenis Lokasi</option>
+                                <option value="Rumah Tangga">Rumah Tangga</option>
+                                <option value="Kafe/Resto">Kafe atau Rumah</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offerContact">Masukkan No Kontak:</label>
+                            <div class="phone-input-group">
+                                <span class="country-code">+62</span>
+                                <input type="tel" id="offerContact" name="offerContact" placeholder="" required pattern="[0-9]{8,12}">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="offerAmount">Jumlah Ampas:</label>
+                            <input type="text" id="offerAmount" name="offerAmount" placeholder="Contoh: 15 kg" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offerArea">Alamat:</label>
+                            <input type="text" id="offerArea" name="offerArea" placeholder="Masukkan alamat lengkap" required>
+                        </div>
+
+                        <button type="submit" class="button primary">SIMPAN</button>
+                    </form>
+                    <!-- Pesan feedback setelah submit -->
+                    <div id="formMessage" class="form-message" style="display:none;"></div>
                 </div>
             </div>
-            <div class="footer-section click-for-more">
-                <h3>Click for More</h3>
+        </section>
+    </main>
+
+    <!-- FOOTER UTAMA (Copy-paste dari index.html untuk konsistensi) -->
+    <footer class="main-footer">
+        <div class="container footer-grid-container">
+            <!-- Bagian 1: Logo & Deskripsi Singkat -->
+            <div class="footer-section footer-brand-info">
+                <a href="index.html" class="footer-logo-link">
+                    <!-- Pastikan Logo.png ada di public/assets/images/ -->
+                    <img src="assets/images/LogoG2G2.svg" alt="G2G Logo" class="footer-logo" />
+                    <!-- <span class="footer-brand-name">Grounds2Gourmet</span> -->
+                </a>
+                <p class="brand-tagline">"Jamur yang Tumbuh dari Sisa, Bukan dari Sia-Sia."</p>
+                <p class="brand-description">Platform inovatif untuk mengubah ampas kopi menjadi sumber daya berharga, mendukung urban farming dan ekonomi sirkular.</p>
+            </div>
+
+            <!-- Bagian 2: Navigasi Cepat -->
+            <div class="footer-section footer-quick-links">
+                <h3>Jelajahi G2G</h3>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Product</a></li>
-                    <li><a href="#">Partnership</a></li>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="#why-g2g">Tentang</a></li>
+                    <li><a href="#fitur-utama">Fitur</a></li>
+                    <li><a href="#cara-kerja-g2g">Cara Kerja</a></li> <!-- Contoh link ke section di halaman utama -->
                 </ul>
             </div>
-            <div class="footer-section contact-us-form">
-                <h3>Contact Us</h3>
-                <form>
-                    <div class="form-row">
-                        <input type="text" placeholder="Your Name" />
-                        <input type="email" placeholder="Your Email" />
-                    </div>
-                    <input type="text" placeholder="Subject" />
-                    <textarea placeholder="Message"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+
+            <!-- Bagian 3: Hubungi Kami (sudah ada) -->
+            <div class="footer-section get-in-touch">
+                <h3>Hubungi Kami</h3>
+                <p>
+                    <!-- Pastikan MapsFooter.png ada di public/assets/icons/ -->
+                    <img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/> 
+                    Singaperbangsa Karawang, Indonesia
+                </p>
+                <p>
+                    <!-- Pastikan MailFooter.png ada di public/assets/icons/ -->
+                    <img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/> 
+                    informasi@grounds2gourmet.com
+                </p>
+                <div class="social-icons">
+                    <!-- Pastikan ikon-ikon ini ada di public/assets/icons/ -->
+                    <a href="https://twitter.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
+                    <a href="https://facebook.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
+                    <a href="https://instagram.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
+                    <a href="https://linkedin.com/company/edufair.himsika" target="_blank"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
+                    <a href="https://youtube.com/user/edufair.himsika" target="_blank"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; Grounds2Gourmet All Right Reserved Designed By G2G Team</p>
+            <p>&copy; 2025 Grounds2Gourmet All Right Reserved. Didesain oleh Tim Doa Ayah.</p>
+        </div>
+    </footer>
+
+    <!-- Impor JavaScript files -->
+    <script type="module" src="js/offerLogic.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+            // JavaScript untuk menangani submit form
+            import { addCoffeeOffer } from './js/offerLogic.js';
+
+            const offerForm = document.getElementById('offerForm');
+            const formMessage = document.getElementById('formMessage');
+
+            // Fungsi untuk menampilkan pesan feedback (sukses/gagal/validasi)
+            function showFormMessage(message, isSuccess = false) {
+                formMessage.textContent = message;
+                formMessage.style.display = 'block';
+                if (isSuccess) {
+                    formMessage.style.backgroundColor = 'var(--color-tertiary-soft-beige)';
+                    formMessage.style.color = 'var(--color-primary-dark-teal)';
+                    formMessage.style.borderColor = 'var(--color-primary-dark-teal)';
+                } else {
+                    formMessage.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
+                    formMessage.style.color = 'red';
+                    formMessage.style.borderColor = 'red';
+                }
+            }
+
+            // Fungsi untuk membersihkan semua pesan error/validasi dari form groups
+            function clearValidationErrors() {
+                document.querySelectorAll('.form-group .error-message').forEach(el => el.remove());
+                document.querySelectorAll('.form-group input, .form-group select, .phone-input-group').forEach(el => {
+                    el.classList.remove('input-error');
+                });
+            }
+
+            // Fungsi untuk menampilkan error spesifik per field
+            function displayFieldError(elementId, message) {
+                const inputElement = document.getElementById(elementId);
+                if (inputElement) {
+                    // Tambahkan kelas error ke parent .phone-input-group jika ada
+                    const targetElement = inputElement.closest('.phone-input-group') || inputElement;
+                    targetElement.classList.add('input-error');
+
+                    const formGroup = inputElement.closest('.form-group');
+                    if (formGroup && !formGroup.querySelector('.error-message')) {
+                        const errorMessage = document.createElement('small');
+                        errorMessage.className = 'error-message';
+                        errorMessage.style.color = 'red';
+                        errorMessage.style.marginTop = '5px';
+                        errorMessage.textContent = message;
+                        formGroup.appendChild(errorMessage);
+                    }
+                }
+            }
+
+            if (offerForm) {
+                offerForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Mencegah reload halaman
+                    clearValidationErrors(); // Bersihkan error sebelumnya
+
+                    const offerData = {
+                        name: document.getElementById('offerName').value.trim(),
+                        type: document.getElementById('offerType').value,
+                        contact: document.getElementById('offerContact').value.trim(), // Ambil hanya bagian yang diinput pengguna
+                        amount: document.getElementById('offerAmount').value.trim(),
+                        area: document.getElementById('offerArea').value.trim()
+                    };
+
+                    let isValid = true; // Flag validasi
+
+                    // --- Validasi Input ---
+
+                    // 1. Nama: Tidak boleh kosong, minimal 3 karakter
+                    if (offerData.name.length < 3) {
+                        displayFieldError('offerName', 'Nama minimal 3 karakter.');
+                        isValid = false;
+                    }
+
+                    // 2. Jenis Lokasi: Tidak boleh kosong (value default option "")
+                    if (offerData.type === "") {
+                        displayFieldError('offerType', 'Mohon pilih jenis lokasi.');
+                        isValid = false;
+                    }
+
+                    // 3. Nomor Kontak: Hanya digit setelah +62, minimal 8 digit, tanpa '0' di awal
+                    // Regex: harus dimulai dengan 8, 8 sampai 12 digit
+                    const phoneRegex = /^[8-9][0-9]{7,11}$/; // Contoh: 8xxxxxxx (min 8 digit total), maks 12
+                    if (!phoneRegex.test(offerData.contact)) {
+                        displayFieldError('offerContact', 'Nomor kontak tidak valid (contoh: 812xxxxxx).');
+                        isValid = false;
+                    }
+
+                    // 4. Jumlah Ampas: Tidak boleh kosong, harus angka (bisa desimal), diikuti 'kg' atau 'gram'
+                    const amountRegex = /^(\d+(\.\d+)?)\s*(kg|gram)$/i;
+                    if (!amountRegex.test(offerData.amount)) {
+                        displayFieldError('offerAmount', 'Jumlah ampas tidak valid (contoh: 15 kg atau 500 gram).');
+                        isValid = false;
+                    }
+
+                    // 5. Alamat: Tidak boleh kosong, minimal 10 karakter
+                    if (offerData.area.length < 10) {
+                        displayFieldError('offerArea', 'Alamat minimal 10 karakter.');
+                        isValid = false;
+                    }
+
+                    // --- Akhir Validasi Input ---
+
+                    if (isValid) {
+                        // Konstruksi nomor telepon lengkap dengan +62
+                        offerData.contact = '+62' + offerData.contact; 
+                        
+                        const addedOffer = addCoffeeOffer(offerData); // Panggil fungsi dari offerLogic.js
+
+                        if (addedOffer) {
+                            showFormMessage('Penawaran Anda berhasil dikirim! Silakan lihat di halaman "Daftar Ampas Kopi".', true);
+                            offerForm.reset(); // Kosongkan form setelah sukses
+                            console.log('Offer submitted and added:', addedOffer);
+                        } else {
+                            showFormMessage('Gagal mengirim penawaran. Terjadi kesalahan pada data.', false);
+                            console.error('Failed to submit offer, addCoffeeOffer returned null.');
+                        }
+                    } else {
+                        showFormMessage('Mohon perbaiki kesalahan pada formulir.', false);
+                    }
+                });
+            }
+        </script>
+</body>
+</html> All Right Reserved Designed By G2G Team</p>
         </div>
     </footer>
 
