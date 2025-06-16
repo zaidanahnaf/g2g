@@ -1,0 +1,14 @@
+
+#228b22
+#7a9972
+#f0fdec
+#f6edd9
+    --color-primary-dark-teal: #0A4C4A;         /* Header, CTA utama, elemen branding */
+    --color-secondary-light-warm-gray: #F0F0F0; /* Background utama */
+    --color-tertiary-soft-beige: #EFE7DD;       /* Background kartu/konten */
+    --color-accent-mustard-yellow: #FFD700;     /* Aksen, highlight, tombol sekunder */
+
+    --color-primary-dark-teal: #228b22;         /* Header, CTA utama, elemen branding */
+    --color-secondary-light-warm-gray: #f0fdec; /* Background utama */
+    --color-tertiary-soft-beige: #f6edd9;       /* Background kartu/konten */
+    --color-accent-mustard-yellow: #7a9972;     /* Aksen, highlight, tombol sekunder */
