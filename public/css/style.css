@@ -113,8 +113,8 @@ section {
 }
 
 .main-header.scrolled .navbar {
-    background: var(--color-white);
-    color: var(--color-primary-dark-teal);
+    background: var(--color-primary-dark-teal);
+    color: var(--color-white);
     transform: scale(0.95);
 }
 
@@ -931,6 +931,7 @@ section {
     font-size: 1em;
 }
 
+
 /* Section Navigasi Pills */
 .top-nav-pills-section {
     background-color: var(--color-secondary-light-warm-gray);
@@ -942,7 +943,7 @@ section {
     display: flex;
     justify-content: center;
     gap: 15px;
-    background-color: var(--color-primary-dark-teal);
+    background-color: var(--color-primary-dark-teal); /* Keep background as dark teal for the container */
     padding: 10px 20px;
     border-radius: var(--border-radius-pill);
     box-shadow: var(--shadow-medium);
@@ -950,26 +951,29 @@ section {
     margin-bottom: 40px;
 }
 
+/* Styling for non-active pill items */
 .pill-nav-item {
-    color: var(--color-white);
+    background-color: #228B22; /* Background color for non-active */
+    color: #FFFFFF;           /* Text color for non-active: white */
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     padding: 8px 20px;
     border-radius: var(--border-radius-pill);
     transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: transparent;
     display: inline-block;
 }
 
+/* Styling for hover state on non-active pill items */
 .pill-nav-item:hover {
-    background-color: #083A38;
-    color: var(--color-accent-mustard-yellow);
+    background-color: #083A38; /* Slightly darker green on hover */
+    color: #FFFFFF; /* Keep text white on hover for inactive pills for consistency */
 }
 
+/* Styling for active pill items */
 .pill-nav-item.active {
-    background-color: var(--color-accent-mustard-yellow);
-    color: var(--color-text-charcoal);
+    background-color: #E0F9DF; /* Background color for active */
+    color: #1E5D1F;           /* Text color for active: dark green */
 }
 
 /* Breadcrumbs Styling */
