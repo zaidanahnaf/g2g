@@ -2,116 +2,125 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daftar Penawaran Ampas Kopi - Grounds2Gourmet</title>
-    <!-- Hanya satu file CSS yang di-link -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grounds2Gourmet</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <!-- HEADER UTAMA (Copy-paste dari index.html untuk konsistensi) -->
-    <header class="alt-header">
-        <nav class="navbar container">
+    <header>
+        <nav class="navbar">
             <div class="navbar-left">
-                <a href="index.html" class="logo-link">
-                    <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
-                </a>
+                <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
             </div>
+            <ul class="navbar-center">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Tawarkan Ampas</a></li>
+                <li><a href="#">Lihat Daftar Ampas</a></li>
+                <li><a href="#">Panduan Budidaya</a></li>
+
+            </ul>
+<div class="navbar-right">
+    <a href="login.html" class="btn btn-login">Masuk</a>
+</div>
         </nav>
     </header>
 
-    <main class="page-content">
-        <!-- Section Navigasi Pills -->
-        <section class="top-nav-pills-section">
-            <div class="container page-nav-pills-container">
-                <a href="offer-coffee.html" class="pill-nav-item">Tawarkan Ampas</a>
-                <a href="list-offers.html" class="pill-nav-item active">Lihat Daftar Ampas</a>
-                <a href="guide.html" class="pill-nav-item">Panduan Budidaya</a>
-            </div>
-        </section>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>UBAH SISA KOPI MENJADI SUMBER KEHIDUPAN BARU<span class="dot">.</span></h1>
+            <p>GROUNDS2GOURMET MENGHUBUNGKAN PENYUMBANG AMPAS KOPI DENGAN CALON PETANI JAMUR UNTUK MENCIPTAKAN PERTANIAN BERKELANJUTAN DARI LIMBAH RUMAH TANGGA.</p>
+            <a href="login.html" class="btn btn-primary">Mulai Gunakan G2G Sekarang !!</a>
+        </div>
+    </section>
 
-        <!-- Section Breadcrumbs -->
-        <section class="breadcrumbs-section">
-            <div class="container breadcrumbs">
-                <span><a href="dashboard.html">Dashboard</a></span>
-                <span>&gt;</span>
-                <span>Lihat Daftar Ampas</span>
+    
+<div class="list-offers-section">
+    <div class="breadcrumb">
+        <span>Dashboard</span> <img src="assets/icons/ArrowGreen.png" alt=">" /> <span>Lihat Daftar Ampas</span> <img src="assets/icons/ArrowGrey.png" alt=">" />
+    </div>
+    <div class="list-offers-heading">
+        <h1>DAFTAR AMPAS YANG TERSEDIA</h1>
+    </div>
+</div>
+    
+<div class="list-offers-container">
+    <div class="search-bar">
+        <input type="text" placeholder="Cari" />
+        <button type="submit">
+            <img src="assets/icons/ProfileICon.png" alt="Cari" />
+        </button>
+    </div>
+    <div class="offers-grid">
+        <div class="offer-card">
+            <img src="assets/images/AmpasKopiMenumpuk.png" alt="Ground for Espresso" class="offer-image" />
+            <div class="offer-details">
+                <span class="offer-name">Fatkhi Maulana</span>
+                <span class="offer-type">Cafe</span>
+                <p class="offer-address">JL Raya Durian 7, samping indomaret</p>
+                <p class="offer-quantity">15 Kg</p>
             </div>
-        </section>
-        
-        <!-- Main List Offers Section -->
-        <section class="list-offers-main-section container">
-            <div class="list-offers-container">
-                <div class="search-bar">
-                    <input type="text" id="searchOfferInput" placeholder="Cari penawaran..." />
-                    <button type="button" id="searchOfferBtn">
-                        <!-- Pastikan search-icon.png ada di public/assets/icons/ -->
-                        <img src="assets/icons/ProfileICon.png" alt="Cari" />
-                    </button>
+        </div>
+        <div class="offer-card">
+            <img src="assets/images/AmpasKopiMenumpuk.png" alt="Ground for Espresso" class="offer-image" />
+            <div class="offer-details">
+                <span class="offer-name">Fatkhi Maulana</span>
+                <span class="offer-type">Cafe</span>
+                <p class="offer-address">JL Raya Durian 7, samping indomaret</p>
+                <p class="offer-quantity">15 Kg</p>
+            </div>
+        </div>
+        <div class="offer-card">
+            <img src="assets/images/AmpasKopiMenumpuk.png" alt="Ground for Espresso" class="offer-image" />
+            <div class="offer-details">
+                <span class="offer-name">Fatkhi Maulana</span>
+                <span class="offer-type">Cafe</span>
+                <p class="offer-address">JL Raya Durian 7, samping indomaret</p>
+                <p class="offer-quantity">15 Kg</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section get-in-touch">
+                <h3>Get in Touch</h3>
+                <p><img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/> Jakarta, Indonesia</p>
+                <p><img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/> panaceamed.id@gmail.com</p>
+                <div class="social-icons">
+                    <a href="#"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
+                    <a href="#"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
+                    <a href="#"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
+                    <a href="#"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
+                    <a href="#"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
                 </div>
-                <div id="offersGrid" class="offers-grid">
-                    <!-- Penawaran akan dimuat secara dinamis di sini oleh JavaScript -->
-                    <p id="loadingMessage" class="loading-message">Memuat daftar penawaran...</p>
-                    <p id="noOffersMessage" class="no-offers-message" style="display:none;">Belum ada penawaran ampas kopi saat ini. Jadilah yang pertama!</p>
-                </div>
             </div>
-        </section>
-    </main>
-
-    <!-- FOOTER UTAMA (Copy-paste dari index.html untuk konsistensi) -->
-    <footer class="main-footer">
-        <div class="container footer-grid-container">
-            <!-- Bagian 1: Logo & Deskripsi Singkat -->
-            <div class="footer-section footer-brand-info">
-                <a href="index.html" class="footer-logo-link">
-                    <!-- Pastikan Logo.png ada di public/assets/images/ -->
-                    <img src="assets/images/LogoG2G2.svg" alt="G2G Logo" class="footer-logo" />
-                    <!-- <span class="footer-brand-name">Grounds2Gourmet</span> -->
-                </a>
-                <p class="brand-tagline">"Jamur yang Tumbuh dari Sisa, Bukan dari Sia-Sia."</p>
-                <p class="brand-description">Platform inovatif untuk mengubah ampas kopi menjadi sumber daya berharga, mendukung urban farming dan ekonomi sirkular.</p>
-            </div>
-
-            <!-- Bagian 2: Navigasi Cepat -->
-            <div class="footer-section footer-quick-links">
-                <h3>Jelajahi G2G</h3>
+            <div class="footer-section click-for-more">
+                <h3>Click for More</h3>
                 <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="#why-g2g">Tentang</a></li>
-                    <li><a href="#fitur-utama">Fitur</a></li>
-                    <li><a href="#cara-kerja-g2g">Cara Kerja</a></li> <!-- Contoh link ke section di halaman utama -->
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="#">Partnership</a></li>
                 </ul>
             </div>
-
-            <!-- Bagian 3: Hubungi Kami (sudah ada) -->
-            <div class="footer-section get-in-touch">
-                <h3>Hubungi Kami</h3>
-                <p>
-                    <!-- Pastikan MapsFooter.png ada di public/assets/icons/ -->
-                    <img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/> 
-                    Singaperbangsa Karawang, Indonesia
-                </p>
-                <p>
-                    <!-- Pastikan MailFooter.png ada di public/assets/icons/ -->
-                    <img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/> 
-                    edufairhimsika@gmail.com
-                </p>
-                <div class="social-icons">
-                    <!-- Pastikan ikon-ikon ini ada di public/assets/icons/ -->
-                    <a href="https://twitter.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
-                    <a href="https://facebook.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
-                    <a href="https://instagram.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
-                    <a href="https://linkedin.com/company/edufair.himsika" target="_blank"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
-                    <a href="https://youtube.com/user/edufair.himsika" target="_blank"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
-                </div>
+            <div class="footer-section contact-us-form">
+                <h3>Contact Us</h3>
+                <form>
+                    <div class="form-row">
+                        <input type="text" placeholder="Your Name" />
+                        <input type="email" placeholder="Your Email" />
+                    </div>
+                    <input type="text" placeholder="Subject" />
+                    <textarea placeholder="Message"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Grounds2Gourmet All Right Reserved. Didesain oleh G2G Team.</p>
+            <p>&copy; Grounds2Gourmet All Right Reserved Designed By G2G Team</p>
         </div>
     </footer>
 
-    <!-- Impor JavaScript files -->
-    <script type="module" src="js/offerLogic.js"></script>
-    <script type="module" src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
