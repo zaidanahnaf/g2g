@@ -2,36 +2,50 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Grounds2Gourmet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grounds2Gourmet - Jamur dari Sisa Kopi</title>
+    <!-- Hanya satu file CSS untuk menyederhanakan deployment -->
+     <!-- <link rel="stylesheet" href="css/components.css" /> -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar">
+    <header id="main-header" class="main-header">
+        <nav class="navbar container">
             <div class="navbar-left">
-                <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
+                <!-- Pastikan Logo.png ada di public/assets/images/ -->
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/LogoG2G2.svg" alt="G2G Logo" class="logo" />
+                    <!-- Opsional: Jika ada nama brand di samping logo, seperti dari mockup -->
+                    <!-- <span class="brand-name">Grounds2Gourmet</span> -->
+                </a>
             </div>
-            <ul class="navbar-center">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="tentangkami">Tentang Kami</a></li>
-                <li><a href="#">Fitur Utama</a></li>
-            </ul>
-<div class="navbar-right">
-    <a href="login.html" class="btn btn-login">Masuk</a>
-</div>
+            <div class="navbar-right">
+                <ul class="navigation-links">
+                    <li><a href="#why-g2g">Tentang Kami</a></li>
+                    <!-- Mengarahkan ke halaman daftar penawaran ampas kopi sebagai representasi "Fitur Utama" -->
+                    <li><a href="#fitur-utama">Fitur Kami</a></li>
+                    <!-- Mengarahkan ke halaman panduan budidaya sebagai representasi "Tentang Kami" atau informasi inti -->
+                    <li><a href="#cara-kerja-g2g">Panduan</a></li>
+                    <!-- Link "Masuk" diubah ke "Tawarkan Ampas" sesuai MVP, karena tidak ada login fungsional -->
+                    <li><a href="offer-coffee.html" class="btn btn-login">Tawarkan Ampas</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="hero" class="hero">
+        <!-- Pastikan BackgroundHero.png ada di public/assets/images/ -->
+        <div class="hero-background" style="background-image: url('assets/images/BackgroundHero.png');"></div>
         <div class="hero-content">
-            <h1>UBAH SISA KOPI MENJADI SUMBER KEHIDUPAN BARU<span class="dot">.</span></h1>
-            <p>GROUNDS2GOURMET MENGHUBUNGKAN PENYUMBANG AMPAS KOPI DENGAN CALON PETANI JAMUR UNTUK MENCIPTAKAN PERTANIAN BERKELANJUTAN DARI LIMBAH RUMAH TANGGA.</p>
-            <a href="login.html" class="btn btn-primary">Mulai Gunakan G2G Sekarang !!</a>
+            <h1>UBAH SISA KOPI MENJADI SUMBER KEHIDUPAN BARU<span class="dot"></span></h1>
+            <!-- <p>GROUNDS2GOURMET MENGHUBUNGKAN PENYUMBANG AMPAS KOPI DENGAN CALON PETANI JAMUR UNTUK MENCIPTAKAN PERTANIAN BERKELANJUTAN DARI LIMBAH RUMAH TANGGA.</p> -->
+            <p>GROUNDS2GOURMET Menghubungkan penyumbang ampas kopi dengan calon petani jamur untuk menciptakan pertanian berkelanjutan dari limbah rumah tangga.</p>
+            <!-- Link "Mulai Gunakan G2G Sekarang" diubah ke fitur inti "Tawarkan Ampas" -->
+            <a href="offer-coffee.html" class="btn btn-primary">Mulai Gunakan G2G Sekarang !!</a>
         </div>
     </section>
 
-    <section class="why-g2g">
+    <section id="why-g2g" class="why-g2g">
         <div class="container why-g2g-container">
             <div class="why-g2g-text">
                 <span class="label-green">KENAPA G2G HADIR</span>
@@ -41,17 +55,20 @@
                 </p>
             </div>
             <div class="why-g2g-image">
+                <!-- Pastikan KenapaG2GHadir.png ada di public/assets/images/ -->
                 <img src="assets/images/KenapaG2GHadir.png" alt="Jamur" />
             </div>
         </div>
     </section>
 
+    <!-- === Ampas Cuans Section === -->
     <section class="ampas-cuans">
         <div class="container ampas-cuans-container">
             <div class="ampas-cuans-title-box">
                 <span class="ampas-cuans-label">UBAH AMPAS JADI CUAN</span>
             </div>
             <div class="ampas-cuans-cards">
+                <!-- Pastikan gambar-gambar ini ada di public/assets/images/ -->
                 <div class="card card-kopi" style="background-image: url('assets/images/PecintaKopi.png');">
                     <div class="card-content">
                         <h3>PECINTA KOPI NAIK</h3>
@@ -77,14 +94,16 @@
                     </div>
                 </div>
             </div>
-            <a href="login.html" class="btn btn-join ampas-cuans-cta-btn">GABUNG SEKARANG</a>
+            <a href="offer-coffee.html" class="btn btn-join ampas-cuans-cta-btn">GABUNG SEKARANG</a>
         </div>
     </section>
+<!-- Pastikan section "aktor-dibalik-g2g" memiliki background yang sama dengan warna gelombang (var(--color-secondary-light-warm-gray)) -->
 
     <section class="aktor-dibalik-g2g">
         <div class="container aktor-container">
             <span class="label-green aktor-label">AKTOR DIBALIK G2G</span>
             <div class="aktor-content">
+                <!-- Pastikan AktordibalikG2G.png ada di public/assets/images/ -->
                 <img src="assets/images/AktordibalikG2G.png" alt="Aktor Dibalik G2G" class="aktor-image" />
                 <div class="aktor-texts">
                     <div class="aktor-text-block">
@@ -100,7 +119,7 @@
         </div>
     </section>
 
-   <section class="fitur-utama">
+    <section id="fitur-utama" class="fitur-utama">
         <div class="container fitur-container">
             <span class="label-green">FITUR UTAMA DARI G2G</span>
             <div class="feature-boxes-wrapper">
@@ -116,8 +135,8 @@
         </div>
     </section>
 
-    <section class="cara-kerja-g2g">
-         <div class="container cara-kerja-container">
+    <section id="cara-kerja-g2g" class="cara-kerja-g2g">
+        <div class="container cara-kerja-container">
             <span class="label-green-outline">CARA KERJA G2G</span>
             <div class="steps-grid">
                 <div class="step-item">
@@ -144,46 +163,59 @@
         </div>
     </section>
 
-      <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section get-in-touch">
-                <h3>Get in Touch</h3>
-                <p><img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/> Jakarta, Indonesia</p>
-                <p><img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/> panaceamed.id@gmail.com</p>
-                <div class="social-icons">
-                    <a href="#"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
-                    <a href="#"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
-                </div>
+    <footer class="main-footer">
+        <div class="container footer-grid-container">
+            <!-- Bagian 1: Logo & Deskripsi Singkat -->
+            <div class="footer-section footer-brand-info">
+                <a href="index.html" class="footer-logo-link">
+                    <!-- Pastikan Logo.png ada di public/assets/images/ -->
+                    <img src="assets/images/LogoG2G2.svg" alt="G2G Logo" class="footer-logo" />
+                    <!-- <span class="footer-brand-name">Grounds2Gourmet</span> -->
+                </a>
+                <p class="brand-tagline">"Jamur yang Tumbuh dari Sisa, Bukan dari Sia-Sia."</p>
+                <p class="brand-description">Platform inovatif untuk mengubah ampas kopi menjadi sumber daya berharga, mendukung urban farming dan ekonomi sirkular.</p>
             </div>
-            <div class="footer-section click-for-more">
-                <h3>Click for More</h3>
+
+            <!-- Bagian 2: Navigasi Cepat -->
+            <div class="footer-section footer-quick-links">
+                <h3>Jelajahi G2G</h3>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Product</a></li>
-                    <li><a href="#">Partnership</a></li>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="#why-g2g">Tentang</a></li>
+                    <li><a href="#fitur-utama">Fitur</a></li>
+                    <li><a href="#cara-kerja-g2g">Cara Kerja</a></li> <!-- Contoh link ke section di halaman utama -->
                 </ul>
             </div>
-            <div class="footer-section contact-us-form">
-                <h3>Contact Us</h3>
-                <form>
-                    <div class="form-row">
-                        <input type="text" placeholder="Your Name" />
-                        <input type="email" placeholder="Your Email" />
-                    </div>
-                    <input type="text" placeholder="Subject" />
-                    <textarea placeholder="Message"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+
+            <!-- Bagian 3: Hubungi Kami (sudah ada) -->
+            <div class="footer-section get-in-touch">
+                <h3>Hubungi Kami</h3>
+                <p>
+                    <!-- Pastikan MapsFooter.png ada di public/assets/icons/ -->
+                    <img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/> 
+                    Singaperbangsa Karawang, Indonesia
+                </p>
+                <p>
+                    <!-- Pastikan MailFooter.png ada di public/assets/icons/ -->
+                    <img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/> 
+                    edufairhimsika@gmail.com
+                </p>
+                <div class="social-icons">
+                    <!-- Pastikan ikon-ikon ini ada di public/assets/icons/ -->
+                    <a href="https://twitter.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
+                    <a href="https://facebook.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
+                    <a href="https://instagram.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
+                    <a href="https://linkedin.com/company/edufair.himsika" target="_blank"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
+                    <a href="https://youtube.com/user/edufair.himsika" target="_blank"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; Grounds2Gourmet All Right Reserved Designed By G2G Team</p>
+            <p>&copy; 2025 Grounds2Gourmet All Right Reserved. Didesain oleh G2G Team.</p>
         </div>
     </footer>
 
-
+    <!-- Opsional: main.js untuk JS global seperti navigasi aktif -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
