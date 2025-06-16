@@ -1,201 +1,254 @@
+/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+/* --- Global Variables (Color Palette: Urban Zen) --- */
+/* Pastikan warna ini cocok dengan mockup UI/UX final Anda */
+:root {
+    --color-primary-dark-teal: #228b22;         /* Header, CTA utama, elemen branding */
+    --color-secondary-light-warm-gray: #f0fdec; /* Background utama */
+    --color-tertiary-soft-beige: #f6edd9;       /* Background kartu/konten */
+    --color-accent-mustard-yellow: #7a9972;     /* Aksen, highlight, tombol sekunder */
+    --color-text-charcoal: #333333;             /* Teks utama gelap */
+    --color-text-light: #666666;                /* Teks sekunder/abu-abu */
+    --color-white: #FFFFFF;                     /* Putih */
+    --color-black: #000000;                     /* Hitam */
+
+    --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font utama */
+    --font-family-headings: 'Arial', sans-serif; /* Font untuk judul, jika berbeda */
+
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 20px;
+    --border-radius-pill: 30px;
+
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-strong: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Navbar styles */
+/* --- Base Body & Typography --- */
+body, html {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: var(--font-family-primary);
+    line-height: 1.6;
+    color: var(--color-text-charcoal);
+    background-color: var(--color-secondary-light-warm-gray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-headings); /* Menggunakan font terpisah untuk judul */
+    color: var(--color-primary-dark-teal);
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; }
+p { margin-bottom: 1em; }
+
+a {
+    color: var(--color-primary-dark-teal);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-mustard-yellow);
+}
+
+ul { list-style: none; }
+
+/* --- Layout Utilities --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px; /* Padding samping untuk menjaga konten tidak terlalu pinggir */
+}
+
+section {
+    padding: 60px 0; /* Spasi vertikal antar section */
+}
+
+/* --- Main Header / Navbar --- */
+        /* --- Enhanced Navbar --- */
+.main-header {
+    position: absolute;
+    width: 100%;
+    padding: 0 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+.main-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-soft);
+    padding: 10px 0;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2e8b2e; /* solid green background */
-    padding: 10px 30px;
-    border-radius: 30px;
-    max-width: 900px;
-    margin: 20px auto 0 auto;
+    padding: 16px 32px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-header.scrolled .navbar {
+    background: var(--color-white);
+    color: var(--color-primary-dark-teal);
+    transform: scale(0.95);
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.8s;
+}
+
+.navbar:hover::before {
+    left: 100%;
 }
 
 .navbar-left {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background-color: transparent; /* transparent to blend with navbar */
-    padding: 5px 15px;
-    border-radius: 30px 0 0 30px; /* rounded left corners */
+    gap: 12px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-login {
+    background-color: var(--color-primary-dark-teal);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-pill);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.main-header.scrolled .btn-login:hover,
+.main-header.scrolled .btn-login:active {
+    background-color: var(--color-accent-mustard-yellow);
+    color: var(--color-primary-dark-teal);
 }
 
 .logo {
-    height: 30px;
+    height: 42px;
     width: auto;
+    transition: var(--transition-smooth);
 }
 
-.brand-name {
-    font-weight: bold;
-    font-size: 18px;
-    color: white;
-    user-select: none;
+.main-header.scrolled .logo {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(25%) saturate(1500%) hue-rotate(146deg);
 }
 
-.navbar-center {
-    list-style: none;
+.navigation-links {
     display: flex;
-    gap: 15px; /* smaller gap between items */
-    background-color: transparent; /* no background on ul */
-    padding: 0;
-    border-radius: 0;
+    gap: 12px;
 }
 
-.navbar-center li a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
+.navigation-links li a {
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-pill);
     font-weight: 500;
-    padding: 8px 20px;
-    border-radius: 30px; /* pill shape */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: #4caf50; /* bright green pill background */
-    display: inline-block;
+    font-size: 18px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
 }
 
-.navbar-center li a:hover {
-    color: #a5d6a7; /* lighter green on hover */
-    background-color: #66bb6a; /* lighter green background on hover */
+.main-header.scrolled .navigation-links li a {
+    color: var(--color-primary-dark-teal);
 }
 
-.navbar-right .btn-login {
-    background-color: #4caf50; /* bright green */
-    border: none;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 30px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.navigation-links li a:hover,
+.navigation-links li a.active {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
 }
 
-/* Hero section */
+/* --- Hero Section --- */
 .hero {
     position: relative;
-    height: 600px;
-    background-image: url('../assets/images/BackgroundHero.png');
-    background-size: cover;
-    background-position: center;
-    margin-top: 30px;
+    height: 100vh; /* Tinggi hero section */
+ /* Mengisi ruang header untuk efek overlap */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 30px;
+    text-align: left;
+    overflow: hidden; /* Pastikan background tidak melebihi */
 }
 
-/* Remove any background image from body or other sections */
-body {
-    background-image: none !important;
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0; /* Di belakang konten */
 }
 
-/* Remove background image from any other section that might have it */
-.why-g2g {
-    background-image: none !important;
-    padding: 3rem 1rem;
-    background-color: #f9f9f9;
-}
-
-.why-g2g-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.why-g2g-text {
-    flex: 1 1 400px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-}
-
-.label-green {
-    display: inline-block;
-    background-color: transparent;
-    color: #2e8b2e;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    border: 2px solid #2e8b2e;
-    user-select: none;
-    cursor: default;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.why-g2g-text p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.why-g2g-text strong {
-    font-weight: 700;
-}
-
-.why-g2g-image {
-    flex: 1 1 300px;
-    text-align: center;
-}
-
-.why-g2g-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .why-g2g-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .why-g2g-text, .why-g2g-image {
-        flex: 1 1 100%;
-    }
-    .why-g2g-text p {
-        font-size: 1rem;
-    }
-}
-
+/* Overlay gelap pada hero image */
 .hero::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+    z-index: 1; /* Di atas background, di bawah konten */
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
+    position: absolute;
+    left: 20px;
+    padding: 0 40px;
+    z-index: 2; /* Di atas overlay */
+    max-width: 800px;
+    color: var(--color-white); /* Teks putih untuk kontras dengan background gelap */
 }
 
 .hero-content h1 {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 900;
     margin-bottom: 15px;
     line-height: 1.2;
+    color: var(--color-white); /* Judul Hero tetap putih */
 }
 
 .hero-content .dot {
-    color: white;
+    color: var(--color-white); /* Warna titik pada judul hero */
 }
 
 .hero-content p {
@@ -206,83 +259,139 @@ body {
     letter-spacing: 0.03em;
 }
 
-/* Primary button */
+/* Primary button (Global) */
 .btn-primary {
-    background-color: #2e8b2e;
+    background-color: var(--color-primary-dark-teal); /* Warna primer */
     border: none;
-    color: white;
+    color: var(--color-white);
     padding: 12px 30px;
-    border-radius: 30px;
+    border-radius: var(--border-radius-pill);
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-decoration: none;
-}
-
-.navbar-right .btn-login {
-    background-color: #4caf50; /* bright green */
-    border: none;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 30px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
+    display: inline-block; /* Agar bisa atur padding */
 }
 
 .btn-primary:hover {
-    background-color: #1f5e1f;
+    background-color: #083A38; /* Sedikit lebih gelap dari primary-dark-teal */
 }
 
-/* ...existing code... */
-
-/* ... (previous CSS code) ... */
-
-.ampas-cuans {
-    background-color: #f4fff4;
+/* --- Why G2G Section --- */
+.why-g2g {
     padding: 3rem 1rem;
-    border-radius: 20px;
+    background-color: var(--color-secondary-light-warm-gray); /* Latar belakang utama */
+    color: var(--color-text-charcoal); /* Teks utama */
+}
+
+.why-g2g-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+    flex-wrap: wrap; /* Untuk responsivitas */
+}
+
+.why-g2g-text {
+    flex: 1 1 400px;
+}
+
+.label-green {
+    display: inline-block;
+    background-color: var(--color-primary-dark-teal); /* Warna label solid */
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-pill);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--color-primary-dark-teal); /* Border sesuai background */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    user-select: none;
+    cursor: default;
+}
+
+.why-g2g-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.why-g2g-text strong {
+    font-weight: 700;
+    color: var(--color-primary-dark-teal); /* Warna highlight untuk strong */
+}
+
+.why-g2g-image {
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+.why-g2g-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-light);
+}
+
+/* --- Ampas Cuans Section --- */
+.ampas-cuans {
+    background-color: var(--color-tertiary-soft-beige); /* Warna background section */
+    margin: 0 auto; /* Center section */
+    padding: 3rem 2rem; /* Padding vertikal dan horizontal */
+    border-radius: var(--border-radius-lg); /* Sudut membulat pada section utama */
     max-width: 1200px;
     margin: 40px auto;
-    box-shadow: 0 4px 16px rgba(46, 139, 46, 0.08);
-    display: flex; /* Change to flex */
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center items horizontally */
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
+    position: relative; /* Penting: Jadikan parent (section) relative untuk positioning title box */
+    padding-top: calc(1rem + 20px); /* Tambahkan padding atas untuk memberi ruang title box yang overlap */
+    /* 3rem adalah padding awal, 40px adalah perkiraan tinggi setengah title box yang naik */
 }
 
 .ampas-cuans-container {
-    display: grid; /* Use grid for the main layout within the container */
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
-    grid-template-rows: auto auto; /* Two rows for content, plus title */
-    gap: 1.5rem;
-    width: 100%;
-    /* Define grid areas for explicit placement */
+    display: grid;
+    margin-top: 30px;
+    /* Menyesuaikan grid area untuk 4 card dan 1 title + 1 cta */
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
         ". . ampas-title"
         "card-kopi card-menumpuk card-cuan"
         "card-kopi card-solusi card-cuan"
-        ". . cta-button"; /* Area for the "GABUNG SEKARANG" button */
-    justify-items: center; /* Center grid items */
+        ". . cta-button";
+    gap: 1.5rem;
+    width: 100%;
+    justify-items: center;
     align-items: center;
 }
 
-/* Style for the "UBAH AMPAS JADI CUAN" label */
 .ampas-cuans-title-box {
-    grid-area: ampas-title; /* Place it in the defined grid area */
-    justify-self: end; /* Align to the end of its grid area */
-    align-self: start;
-    margin-bottom: 1.5rem; /* Space below the title */
+    background-color: var(--color-secondary-light-warm-gray); /* Background putih seperti mockup About Us */
+    padding: 10px 20px; /* Padding di dalam box */
+    /* PERBAIKAN UTAMA: Asymmetric border-radius untuk efek "Soft & Fluid" / "potongan" */
+    border-radius: 40px 40px 10px 40px; /* Top-left, Top-right, Bottom-right, Bottom-left. Membuat BR bawah kanan lebih kecil */
+    z-index: 2; /* Pastikan di atas section .ampas-cuans */
+    position: absolute; /* Posisikan absolut di atas section .ampas-cuans */
+    top: 0; /* Mulai dari atas section */
+    left: 88%; /* Tengah horizontal relatif terhadap parent */
+    /* Geser ke atas 50% dari tingginya sendiri, dan ke kiri 50% dari lebarnya sendiri */
+    transform: translate(-50%, -50%);
+    white-space: nowrap; /* Pastikan teks tidak pecah baris jika tidak ada space */
+    max-width: fit-content; /* Pastikan lebar sesuai konten, bukan selalu 100% */
 }
 
 .ampas-cuans-label {
     display: inline-block;
     padding: 10px 25px;
-    border: 2px solid #2e8b2e;
-    border-radius: 30px;
-    background-color: #2e8b2e; /* Solid green background */
-    color: white;
+    border: 2px solid var(--color-primary-dark-teal);
+    border-radius: var(--border-radius-pill);
+    background-color: var(--color-primary-dark-teal);
+    color: var(--color-white);
     font-weight: 700;
     font-size: 1rem;
     text-transform: uppercase;
@@ -291,60 +400,45 @@ body {
     cursor: default;
 }
 
-
 .ampas-cuans-cards {
-    display: contents; /* Makes children participate directly in the parent grid */
+    display: contents; /* Biarkan children berpartisipasi langsung dalam grid parent */
 }
 
 .card {
     position: relative;
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-white);
+    font-family: var(--font-family-primary);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 1rem 1.5rem;
-    box-shadow: 0 4px 12px rgba(46, 139, 46, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow lebih lembut */
     cursor: default;
     transition: transform 0.3s ease;
     background-size: cover;
     background-position: center;
-    min-height: 180px; 
-    max-width: 100%; 
-    margin-bottom: 0; 
+    min-height: 180px;
+    max-width: 100%;
+    margin-bottom: 0;
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
-/* Assign grid areas to each card */
-.card-kopi {
-    grid-area: card-kopi;
-    min-height: 375px; /* Double height for the "Pecinta Kopi Naik" card */
-}
-
-.card-menumpuk {
-    grid-area: card-menumpuk;
-}
-
-.card-solusi {
-    grid-area: card-solusi;
-}
-
-.card-cuan {
-    grid-area: card-cuan;
-    min-height: 375px; /* Double height for the "Jadikan Cuan" card */
-}
-
+.card-kopi { grid-area: card-kopi; min-height: 375px; }
+.card-menumpuk { grid-area: card-menumpuk; }
+.card-solusi { grid-area: card-solusi; }
+.card-cuan { grid-area: card-cuan; min-height: 375px; }
 
 .card-content h3 {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.7); /* Text shadow untuk kontras gambar */
+    color: var(--color-white); /* Pastikan teks putih di atas gambar */
 }
 
 .card-content p {
@@ -353,75 +447,35 @@ body {
     text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 
-/* Button style for "UBAH AMPAS JADI CUAN" and "GABUNG SEKARANG" */
 .btn-join {
     display: inline-block;
     padding: 10px 25px;
-    border: 2px solid #2e8b2e;
-    border-radius: 30px;
-    background-color: #2e8b2e;
-    color: white;
+    border: 2px solid var(--color-accent-mustard-yellow); /* Border aksen */
+    border-radius: var(--border-radius-pill);
+    background-color: var(--color-accent-mustard-yellow); /* Background aksen */
+    color: var(--color-text-charcoal); /* Teks gelap */
     font-weight: 700;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease;
     user-select: none;
-    margin-top: 1rem;
     text-decoration: none;
     max-width: max-content;
     align-self: flex-start;
 }
 
-/* Positioning for the "GABUNG SEKARANG" button */
 .ampas-cuans-cta-btn {
-    grid-area: cta-button; /* Place it in the defined grid area */
-    justify-self: end; /* Align to the end of its grid area */
+    grid-area: cta-button;
+    justify-self: end;
     align-self: end;
 }
 
-
 .btn-join:hover {
-    background-color: #1f5e1f;
-    color: white;
+    background-color: #E0BB00; /* Sedikit lebih gelap dari aksen */
+    color: var(--color-text-charcoal);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .ampas-cuans {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 0.5rem;
-    }
-    .ampas-cuans-container {
-        grid-template-columns: 1fr; /* Single column layout for smaller screens */
-        grid-template-areas:
-            "ampas-title"
-            "card-kopi"
-            "card-menumpuk"
-            "card-solusi"
-            "card-cuan"
-            "cta-button"; /* Adjust grid areas for single column */
-    }
-    .ampas-cuans-cards {
-        flex-direction: column;
-        max-width: 100%;
-    }
-    .card {
-        min-height: 180px; /* Reset min-height for responsive */
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-    .ampas-cuans-title-box,
-    .ampas-cuans-cta-btn {
-        justify-self: center; /* Center the title and button on small screens */
-    }
-    .card-kopi, .card-cuan {
-        min-height: 180px; /* Reset double height on small screens */
-    }
-}
-
-
-/* Aktor Dibalik G2G Section */
+/* --- Aktor Dibalik G2G Section --- */
 .aktor-dibalik-g2g {
     padding: 3rem 1rem;
     max-width: 1200px;
@@ -436,10 +490,10 @@ body {
 
 .aktor-label {
     display: inline-block;
-    background-color: #2e8b2e;
-    color: white;
+    background-color: var(--color-primary-dark-teal);
+    color: var(--color-white);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-pill);
     font-weight: 700;
     font-size: 1.2rem;
     user-select: none;
@@ -459,8 +513,8 @@ body {
 .aktor-image {
     flex: 1 1 300px;
     max-width: 400px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-light);
     object-fit: cover;
 }
 
@@ -472,82 +526,69 @@ body {
 }
 
 .aktor-text-block {
-    background-color: #d4f4d7;
+    background-color: var(--color-tertiary-soft-beige); /* Warna background blok teks */
     padding: 1rem 1.5rem;
-    border-radius: 15px;
-    color: #2e8b2e;
-    box-shadow: 0 2px 6px rgba(46, 139, 46, 0.15);
+    border-radius: var(--border-radius-md);
+    color: var(--color-primary-dark-teal); /* Warna teks hijau gelap */
+    box-shadow: var(--shadow-light);
 }
 
 .aktor-text-block h3 {
     margin-bottom: 0.5rem;
     font-weight: 700;
+    color: var(--color-primary-dark-teal);
 }
 
 .aktor-text-block p {
     font-size: 1rem;
     line-height: 1.4;
+    color: var(--color-text-charcoal);
 }
 
-/* Responsive for Aktor Dibalik G2G */
-@media (max-width: 768px) {
-    .aktor-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .aktor-image, .aktor-texts {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-    .aktor-texts {
-       flex-direction: column;
-    }
-}
-
+/* --- Fitur Utama Section --- */
 .fitur-utama {
     padding: 40px 0;
     text-align: center;
 }
 
 .fitur-container {
-    background-color: #2e8b2e; /* Green background */
-    color: white;
-    border-radius: 15px;
+    background-color: var(--color-primary-dark-teal);
+    color: var(--color-white);
+    border-radius: var(--border-radius-md);
     padding: 40px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-strong);
 }
 
 .fitur-container .label-green {
-    background-color: white; 
-    color: #2e8b2e; 
-    margin-bottom: 25px; 
+    background-color: var(--color-white); /* Label hijau di atas background hijau */
+    color: var(--color-primary-dark-teal);
+    margin-bottom: 25px;
 }
-
 
 .feature-boxes-wrapper {
     display: flex;
-    gap: 30px; /* Spacing between the two feature boxes */
+    gap: 30px;
     justify-content: center;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    margin-top: 30px; /* Space between label and feature boxes */
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 .feature-box-item {
-    background-color: white;
-    color: #333;
-    border-radius: 10px;
+    background-color: var(--color-white);
+    color: var(--color-text-charcoal);
+    border-radius: var(--border-radius-md);
     padding: 30px;
     text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1; /* Allows boxes to grow and shrink */
-    min-width: 300px; /* Minimum width before wrapping */
-    max-width: 45%; /* Max width for two columns */
+    box-shadow: var(--shadow-light);
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%;
 }
 
 .feature-number {
-    font-size: 2em; /* Adjust font size for the number */
+    font-size: 2em;
     font-weight: bold;
-    color: #2e8b2e; /* Green color for the number */
+    color: var(--color-primary-dark-teal);
     margin-bottom: 15px;
 }
 
@@ -556,50 +597,7 @@ body {
     line-height: 1.6;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-    }
-    .navbar-center {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 15px;
-        width: 100%;
-        text-align: center;
-    }
-    .navbar-right {
-        margin-top: 15px;
-        width: 100%;
-        text-align: center;
-    }
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-    .steps-grid {
-        grid-template-columns: 1fr;
-    }
-    .aktor-content {
-        flex-direction: column;
-        align-items: center;
-    }
-    .aktor-image {
-        max-width: 100%;
-    }
-    .feature-boxes-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-    .feature-box-item {
-        max-width: 90%; /* Take more width on small screens */
-    }
-}
-
+/* --- Cara Kerja G2G Section --- */
 .cara-kerja-g2g {
     padding: 3rem 1rem;
     max-width: 1200px;
@@ -608,23 +606,23 @@ body {
 }
 
 .cara-kerja-container {
-    background-color: white; /* White background */
-    border-radius: 15px;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-md);
     padding: 40px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    color: #333; /* Dark text for content */
+    box-shadow: var(--shadow-medium);
+    color: var(--color-text-charcoal);
 }
 
 .label-green-outline {
     display: inline-block;
     background-color: transparent;
-    color: #2e8b2e;
+    color: var(--color-primary-dark-teal);
     padding: 0.5rem 1.5rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-pill);
     font-weight: 700;
     font-size: 1.2rem;
-    margin-bottom: 2rem; /* Increased margin for spacing */
-    border: 2px solid #2e8b2e;
+    margin-bottom: 2rem;
+    border: 2px solid var(--color-primary-dark-teal);
     user-select: none;
     cursor: default;
     text-transform: uppercase;
@@ -633,93 +631,79 @@ body {
 
 .steps-grid {
     display: grid;
-    /* --- UBAH BAGIAN INI --- */
-    grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom dengan lebar yang sama */
-    /* --- AKHIR PERUBAHAN --- */
-    gap: 25px; /* Spacing between grid items */
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom di desktop */
+    gap: 25px;
     margin-top: 30px;
 }
 
 .step-item {
-    background-color: white;
-    border-radius: 15px;
+    background-color: var(--color-tertiary-soft-beige); /* Warna background item langkah */
+    border-radius: var(--border-radius-md);
     padding: 25px;
     text-align: left;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e0e0e0; /* Light border for definition */
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--color-secondary-light-warm-gray);
 }
 
 .step-number {
-    font-size: 2.2em; /* Larger font for the number */
+    font-size: 2.2em;
     font-weight: bold;
-    color: #a5d6a7; /* Light green color for the number */
+    color: var(--color-primary-dark-teal); /* Warna nomor langkah */
     margin-bottom: 10px;
-    background-color: #f0f0f0; /* Light gray background for the number */
-    width: 60px; /* Fixed width for the number background */
-    height: 60px; /* Fixed height for the number background */
-    border-radius: 50%; /* Make it circular */
+    background-color: var(--color-secondary-light-warm-gray); /* Background nomor langkah */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto; /* Center number horizontally within its item */
-    margin-right: auto;
-    margin-bottom: 20px; /* Space below the number */
+    margin: 0 auto 20px auto; /* Tengah & space bawah */
 }
 
 .step-item h3 {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--color-primary-dark-teal);
     text-align: center;
 }
 
 .step-item p {
     font-size: 0.95rem;
     line-height: 1.5;
-    color: #555;
+    color: var(--color-text-light); /* Teks sedikit lebih terang */
     text-align: center;
 }
 
-/* Responsive adjustments for Cara Kerja G2G */
-@media (max-width: 768px) {
-    .steps-grid {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-    }
-    .cara-kerja-container {
-        padding: 20px;
-    }
-    .step-item {
-        padding: 20px;
-    }
-}
-
-.footer {
-    background-color: #2e8b2e;
-    color: white;
+/* --- Main Footer --- */
+.main-footer {
+    background-color: var(--color-primary-dark-teal); /* Warna utama dari palette */
+    color: var(--color-white);
     padding: 40px 20px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9em; /* Ukuran font lebih kecil dari mockup sebelumnya */
 }
 
-.footer-content {
+.main-footer .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around; /* Distribute space */
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
     gap: 30px;
+    align-items: flex-start; /* Align items to top */
 }
 
 .footer-section {
     flex: 1;
-    min-width: 250px;
-    padding: 15px;
+    min-width: 250px; /* Lebar minimum */
+    padding: 0 15px; /* Padding samping dalam section */
 }
 
 .footer-section h3 {
     font-size: 1.4rem;
     margin-bottom: 20px;
     font-weight: 700;
+    color: var(--color-white); /* Judul footer putih */
 }
 
 .footer-section p {
@@ -740,19 +724,20 @@ body {
 }
 
 .footer-section ul li a {
-    color: white;
+    color: var(--color-white);
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    color: #a5d6a7;
+    color: var(--color-accent-mustard-yellow); /* Aksen hover */
 }
 
 .footer-icon {
     height: 20px;
     width: auto;
+    filter: invert(1); /* Membuat ikon putih jika aslinya gelap */
 }
 
 .social-icons {
@@ -762,79 +747,14 @@ body {
 }
 
 .social-icon {
-    height: 24px;
+    height: 28px; /* Sedikit lebih besar dari ikon footer p */
     width: auto;
     transition: transform 0.3s ease;
+    filter: invert(1); /* Membuat ikon putih jika aslinya gelap */
 }
 
 .social-icon:hover {
     transform: translateY(-3px);
-}
-
-.contact-us-form {
-    background-color: white;
-    color: #333;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    flex: 2; /* Make the form section wider */
-    max-width: 450px;
-}
-
-.contact-us-form h3 {
-    color: #2e8b2e;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.contact-us-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-us-form .form-row {
-    display: flex;
-    gap: 15px;
-}
-
-.contact-us-form input[type="text"],
-.contact-us-form input[type="email"],
-.contact-us-form textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-}
-
-.contact-us-form input::placeholder,
-.contact-us-form textarea::placeholder {
-    color: #aaa;
-}
-
-.contact-us-form textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.contact-us-form button {
-    background-color: #2e8b2e;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-end; /* Align button to the right */
-}
-
-.contact-us-form button:hover {
-    background-color: #1f5e1f;
 }
 
 .footer-bottom {
@@ -846,9 +766,110 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* Responsive adjustments for footer */
-@media (max-width: 768px) {
-    .footer-content {
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Medium screens - tablet landscape */
+    .navbar {
+        max-width: 700px;
+        padding: 10px 20px;
+    }
+    .navbar-center {
+        gap: 10px;
+    }
+    .navbar-center li a {
+        padding: 6px 15px;
+    }
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    .hero-content p {
+        font-size: 14px;
+    }
+    .ampas-cuans-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk ampas cuans */
+        grid-template-areas:
+            "ampas-title ampas-title"
+            "card-kopi card-menumpuk"
+            "card-solusi card-cuan"
+            "cta-button cta-button";
+    }
+    .ampas-cuans {
+        margin: 0 20px;
+        border-radius: var(--border-radius-lg);
+        padding-top: calc(3rem + 30px);
+    }
+    .ampas-cuans-title-box {
+        top: 0;
+        left: 55%;
+        transform: translateX(50%) translateY(-50%);
+        border-radius: var(--border-radius-pill);
+        padding: 10px 20px;
+    }
+    .ampas-cuans-cta-btn {
+        justify-self: center; /* Tengah di 2 kolom */
+    }
+    .card-kopi, .card-cuan {
+        min-height: 180px; /* Reset tinggi untuk grid 2 kolom */
+    }
+    .steps-grid {
+        grid-template-columns: 1fr; /* Satu kolom untuk cara kerja */
+    }
+}
+
+@media (max-width: 768px) { /* Small screens - tablet portrait */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+    .navbar-center {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    .navbar-right {
+        margin-top: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    .hero {
+        height: 500px;
+        padding: 0 15px;
+    }
+    .hero-content h1 {
+        font-size: 24px;
+    }
+    .hero-content p {
+        font-size: 14px;
+    }
+    .ampas-cuans-title-box {
+        top: 0;
+        left: 60px;
+        transform: translateX(50%) translateY(-50%);
+        border-radius: var(--border-radius-pill);
+        padding: 10px 20px;
+    }
+    .why-g2g-container, .aktor-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .why-g2g-text, .why-g2g-image, .aktor-image, .aktor-texts {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    .aktor-texts {
+        flex-direction: column;
+    }
+    .feature-boxes-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .feature-box-item {
+        max-width: 90%;
+        min-width: unset;
+    }
+    .main-footer .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -861,18 +882,584 @@ body {
     .social-icons {
         justify-content: center;
     }
-    .contact-us-form .form-row {
+}
+
+@media (max-width: 480px) { /* Extra small screens - mobile portrait */
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    .button, .btn-primary, .btn-login, .btn-join { padding: 10px 20px; font-size: 0.9em; }
+    .cta-buttons { flex-direction: column; }
+    .navbar { padding: 10px; }
+    .navbar-left .logo { height: 25px; }
+    .hero-content h1 { font-size: 20px; }
+    .hero-content p { font-size: 13px; }
+    .ampas-cuans, .aktor-dibalik-g2g, .fitur-utama, .cara-kerja-g2g { padding: 2rem 0.5rem; }
+    .footer-section h3 { font-size: 1.2rem; }
+    .footer-section p, .footer-section ul li a { font-size: 0.85rem; }
+}
+
+/* --- CSS Final untuk offer-coffee.html --- */
+
+/* Hero Section Khusus untuk Halaman Form */
+.form-hero {
+    /* BackgroundHero.png adalah gambar placeholder default */
+    /* Untuk halaman form, kita bisa menggunakan gambar yang lebih abstrak atau pattern */
+    background-color: var(--color-primary-dark-teal); /* Warna solid jika tidak ada gambar spesifik */
+    height: 30vh; /* Lebih pendek dari hero utama, fokus ke form */
+    margin-top: 0; /* Pastikan tidak ada margin atas */
+    padding: 0 30px;
+}
+
+.form-hero .hero-content {
+    /* Mengatur ulang posisi konten hero untuk form page */
+    position: relative; /* Karena hero page lebih pendek, cukup di tengah */
+    left: auto;
+    transform: none;
+    padding: 20px;
+    max-width: 800px; /* Lebar konten hero */
+    margin: 0 auto;
+    text-align: center; /* Teks di tengah hero */
+}
+
+.form-hero .hero-content h1 {
+    font-size: 2em; /* Lebih kecil dari landing page hero */
+}
+
+.form-hero .hero-content p {
+    font-size: 1em;
+}
+
+/* Section Navigasi Pills */
+.top-nav-pills-section {
+    background-color: var(--color-secondary-light-warm-gray);
+    padding: 30px 0 0;
+    text-align: center;
+}
+
+.page-nav-pills-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: var(--color-primary-dark-teal);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-pill);
+    box-shadow: var(--shadow-medium);
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.pill-nav-item {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: var(--border-radius-pill);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.pill-nav-item:hover {
+    background-color: #083A38;
+    color: var(--color-accent-mustard-yellow);
+}
+
+.pill-nav-item.active {
+    background-color: var(--color-accent-mustard-yellow);
+    color: var(--color-text-charcoal);
+}
+
+/* Breadcrumbs Styling */
+.breadcrumbs-section {
+    background-color: var(--color-secondary-light-warm-gray);
+    padding: 15px 0 20px; /* Padding bawah lebih besar */
+}
+
+.breadcrumbs {
+    font-size: 0.9em;
+    color: var(--color-text-light);
+    /* margin-bottom: 20px; Dihapus karena padding di section */
+}
+
+.breadcrumbs a {
+    color: var(--color-primary-dark-teal);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* Offer Form Section - Utama (Container Gambar + Form) */
+.offer-form-section {
+    background-color: var(--color-secondary-light-warm-gray); /* Background section utama */
+    padding: 40px 15px; /* Padding vertikal dan horizontal */
+    display: flex; /* Untuk layout berdampingan */
+    justify-content: center; /* Tengah secara horizontal */
+    align-items: flex-start; /* Rata atas vertikal */
+}
+
+.form-card-wrapper {
+    display: flex; /* Mengatur layout gambar dan form */
+    background-color: var(--color-white); /* Background putih untuk seluruh kartu besar */
+    border-radius: var(--border-radius-lg); /* Sudut membulat pada kartu besar */
+    box-shadow: var(--shadow-strong); /* Shadow yang lebih kuat untuk kartu utama */
+    overflow: hidden; /* Memastikan border-radius bekerja pada gambar */
+    max-width: 1000px; /* Lebar maksimum kartu */
+    width: 100%;
+}
+
+.form-image-container {
+    flex: 1; /* Ambil proporsi ruang */
+    min-width: 300px; /* Lebar minimum agar gambar tidak terlalu kecil */
+    max-width: 400px; /* Batasi lebar gambar pada desktop */
+    position: relative; /* Untuk shadow internal atau efek gambar */
+    overflow: hidden; /* Memastikan sudut membulat gambar */
+    border-radius: var(--border-radius-lg); /* Sudut membulat */
+}
+
+.form-image {
+    width: 100%;
+    height: 100%; /* Memenuhi container */
+    object-fit: cover; /* Memastikan gambar mengisi tanpa distorsi */
+    display: block;
+    border-radius: var(--border-radius-lg); /* Sudut membulat */
+}
+
+.form-content-block {
+    flex: 2; /* Ambil lebih banyak ruang untuk konten form */
+    padding: 40px; /* Padding di dalam blok konten form */
+    color: var(--color-text-charcoal);
+}
+
+.form-title {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--color-primary-dark-teal);
+    text-align: left;
+}
+
+.form-subtitle {
+    font-size: 1.1em;
+    color: var(--color-text-charcoal);
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.form-instruction {
+    font-size: 0.9em;
+    color: var(--color-text-light);
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* Form Elements Styling (Ini sudah ada di style.css, pastikan tidak duplikat) */
+/*
+.g2g-form {
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+}
+*/
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--color-text-charcoal);
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-sm);
+    font-size: 1em;
+    color: var(--color-text-charcoal);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="tel"]::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-text-light);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-primary-dark-teal);
+    box-shadow: 0 0 0 3px rgba(10, 76, 74, 0.2);
+    outline: none;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: var(--color-text-light);
+}
+
+.form-message {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: var(--border-radius-sm);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+    border: 1px solid; /* Untuk border pesan */
+}
+
+/* Perbaikan untuk tombol SIMPAN di form */
+.g2g-form .button.primary {
+    width: 100%; /* Tombol penuh lebar */
+    align-self: stretch;
+    border-radius: var(--border-radius-pill);
+    background-color: var(--color-primary-dark-teal);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 30px;
+    align-self: flex-end; /* Rata kanan di dalam flex container */
+    margin-top: 25px; /* Spasi dari input terakhir */
+    transition: ease-out 0.3s;
+    cursor: pointer;
+}
+
+.g2g-form .button.primary:hover {
+    background-color: #083A38; /* Sedikit lebih gelap dari primary-dark-teal */
+    color: var(--color-white);
+}
+
+/* --- Responsive Adjustments for offer-coffee.html --- */
+@media (max-width: 992px) { /* Tablet landscape */
+    .form-card-wrapper {
+        flex-direction: column; /* Ubah ke kolom */
+        max-width: 600px; /* Batasi lebar */
+        margin: 0 auto; /* Tengah */
+    }
+    .form-image-container {
+        max-width: 100%; /* Lebar penuh */
+        border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; /* Hanya atas yang bulat */
+        min-height: 250px; /* Tinggi minimum untuk gambar */
+    }
+    .form-image {
+        border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; /* Hanya atas yang bulat */
+    }
+    .form-content-block {
+        padding: 30px; /* Padding di mobile */
+    }
+}
+
+@media (max-width: 768px) { /* Tablet portrait */
+    .page-nav-pills-container {
         flex-direction: column;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 15px;
+    }
+    .pill-nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    .offer-form-section {
+        padding: 20px 15px;
+    }
+    .form-title {
+        font-size: 1.5em;
+    }
+    .form-subtitle, .form-instruction {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile portrait */
+    .page-nav-pills-container {
+        font-size: 0.9em;
+        padding: 8px 10px;
+        gap: 8px;
+    }
+    .pill-nav-item {
+        font-size: 0.9em;
+        padding: 6px 10px;
+    }
+    .form-title {
+        font-size: 1.3em;
+    }
+    .form-subtitle, .form-instruction {
+        font-size: 0.85em;
+    }
+    .offer-form-section {
+        padding: 15px 10px;
+    }
+    .form-content-block {
+        padding: 20px;
+    }
+    .g2g-form .button.primary {
+        width: 100%; /* Tombol penuh lebar di mobile */
+        align-self: stretch; /* Stretch to fill width */
+    }
+}
+
+
+
+/* --- CSS Baru untuk Halaman Daftar Penawaran (list-offers.html) --- */
+
+/* Main Content Area for List Offers */
+.list-offers-main-section {
+    background-color: var(--color-secondary-light-warm-gray); /* Latar belakang section */
+    padding: 40px 15px; /* Spasi dari atas/bawah dan samping */
+    /* Menggunakan container dari global style */
+}
+
+.list-offers-container {
+    background-color: var(--color-white); /* Background putih untuk box utama list */
+    border-radius: var(--border-radius-lg); /* Sudut membulat */
+    box-shadow: var(--shadow-medium); /* Shadow lembut */
+    padding: 30px;
+    max-width: 1000px; /* Lebar maksimum container */
+    margin: 0 auto; /* Tengah */
+}
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    justify-content: flex-end; /* Rata kanan sesuai mockup */
+    align-items: center;
+    margin-bottom: 30px; /* Spasi di bawah search bar */
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-pill); /* Bentuk pill */
+    font-size: 1rem;
+    width: 250px; /* Lebar input */
+    color: var(--color-text-charcoal);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: var(--color-primary-dark-teal);
+    box-shadow: 0 0 0 3px rgba(10, 76, 74, 0.2);
+    outline: none;
+}
+
+.search-bar button {
+    background-color: var(--color-primary-dark-teal); /* Warna hijau gelap */
+    border: none;
+    border-radius: 50%; /* Bentuk lingkaran */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #083A38; /* Sedikit lebih gelap saat hover */
+}
+
+.search-bar button img {
+    height: 20px;
+    width: 20px;
+    filter: invert(1); /* Membuat ikon putih jika aslinya gelap */
+}
+
+/* Offers Grid Styling */
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid responsif */
+    gap: 30px; /* Spasi antar kartu */
+    justify-content: center; /* Tengah item di grid jika ada sisa ruang */
+}
+
+/* Offer Card Styling */
+.offer-card {
+    background-color: var(--color-tertiary-soft-beige); /* Background kartu */
+    border-radius: var(--border-radius-md); /* Sudut membulat */
+    box-shadow: var(--shadow-light); /* Shadow lembut */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.offer-image {
+    width: 100%;
+    height: 180px; /* Tinggi gambar tetap */
+    object-fit: cover; /* Memenuhi area, cropping jika perlu */
+    display: block;
+    border-bottom: 1px solid var(--color-secondary-light-warm-gray); /* Border bawah gambar */
+}
+
+.offer-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Spasi antar detail */
+}
+
+.offer-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--color-text-charcoal); /* Warna hijau untuk nama */
+    margin-bottom: 5px;
+}
+
+.offer-type {
+    font-size: 0.85em;
+    color: var(--color-text-light);
+    background-color: rgba(10, 76, 74, 0.1); /* Background hijau transparan */
+    padding: 3px 8px;
+    border-radius: var(--border-radius-sm);
+    align-self: flex-start; /* Agar pill tetap di kiri */
+    margin-bottom: 5px;
+    color: var(--color-primary-dark-teal); /* Warna teks pill */
+    font-weight: 600;
+}
+
+.offer-address {
+    font-size: 0.9em;
+    color: var(--color-text-charcoal);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.offer-quantity {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: var(--color-text-charcoal);
+    margin-bottom: 10px;
+}
+
+.contact-offer-button {
+    /* Menggunakan gaya .button primary global dari style.css */
+    width: 100%; /* Tombol memenuhi lebar kartu */
+    margin-top: auto; /* Dorong tombol ke bawah kartu */
+    padding: 10px 15px; /* Padding lebih kecil untuk tombol di kartu */
+    font-size: 0.9em;
+    border-radius: var(--border-radius-md); /* Sudut membulat sesuai kartu */
+}
+
+/* Message when no offers or loading */
+.loading-message,
+.no-offers-message {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--color-text-light);
+    margin: 50px auto;
+    width: 100%; /* Memenuhi lebar grid untuk penengahan */
+}
+
+.button.primary.contact-offer-button {
+    background-color: var(--color-primary-dark-teal); /* Warna hijau gelap */
+    color: var(--color-white);
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.button.primary.contact-offer-button:hover {
+    background-color: #083A38; /* Sedikit lebih gelap saat hover */
+}
+
+/* Responsive adjustments for list offers */
+@media (max-width: 768px) {
+    .list-offers-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .search-bar {
+        flex-direction: column; /* Stack input and button */
+        justify-content: center;
+        align-items: stretch; /* Stretch items to full width */
+        gap: 15px;
+    }
+    .search-bar input {
+        width: 100%;
+        max-width: unset; /* Remove max-width on mobile */
+    }
+    .search-bar button {
+        width: 100%; /* Button full width */
+        border-radius: var(--border-radius-md); /* Tombol persegi panjang */
+        height: auto; /* Tinggi auto */
+        padding: 10px;
+    }
+    .offers-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+    .offer-card {
+        flex-direction: row; /* Layout kartu horizontal di mobile */
+        align-items: center;
+        padding: 15px;
+        gap: 15px;
+    }
+    .offer-image {
+        width: 120px; /* Ukuran gambar lebih kecil */
+        height: 120px;
+        border-radius: var(--border-radius-md); /* Rounded corners untuk gambar */
+        border-bottom: none; /* Hapus border bawah */
+        flex-shrink: 0; /* Jangan biarkan gambar menyusut */
+    }
+    .offer-details {
+        flex: 1; /* Ambil sisa ruang */
+        padding: 0; /* Hapus padding awal */
+    }
+    .contact-offer-button {
+        width: auto; /* Tombol menyesuaikan konten di mobile */
+        align-self: flex-start; /* Kembali ke kiri */
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .list-offers-container {
+        padding: 15px;
+    }
+    .search-bar {
+        gap: 10px;
+    }
+    .offer-card {
+        flex-direction: column; /* Kembali ke stack vertikal jika sangat kecil */
+        align-items: flex-start;
+        text-align: left;
         gap: 0;
     }
-    .contact-us-form input,
-    .contact-us-form textarea,
-    .contact-us-form button {
+    .offer-image {
         width: 100%;
-        margin-top: 15px; /* Add some space between stacked inputs */
+        height: 150px;
+        margin-bottom: 10px;
+        border-radius: var(--border-radius-md);
     }
-    .contact-us-form button {
-        align-self: stretch; /* Make button full width on small screens */
+    .offer-details {
+        width: 100%;
+    }
+    .offer-name, .offer-type, .offer-address, .offer-quantity {
+        font-size: 0.9em;
+    }
+    .offer-type {
+        margin-top: 5px;
     }
 }
 

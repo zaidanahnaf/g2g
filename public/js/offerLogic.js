@@ -1,7 +1,14 @@
-import { coffeeGroundOffers } from './mockData.js';
+// public/js/offerLogic.js
+import { coffeeGroundOffers, saveOffers } from './mockData.js'; // Import saveOffers juga
 
 // Fungsi untuk menambahkan penawaran ampas kopi baru
 export function addCoffeeOffer(offerData) {
+    // Basic validation, pastikan data lengkap sebelum menambahkan
+    if (!offerData.name || !offerData.type || !offerData.area || !offerData.amount || !offerData.contact) {
+        console.error("Validation failed: All offer fields must be filled.");
+        return null; // Mengembalikan null jika validasi gagal
+    }
+
     const newOffer = {
         id: 'o' + (coffeeGroundOffers.length + 1).toString().padStart(3, '0'), // ID sederhana
         name: offerData.name,
@@ -12,12 +19,13 @@ export function addCoffeeOffer(offerData) {
         dateAdded: new Date().toISOString().split('T')[0] // Tanggal penambahan otomatis
     };
     coffeeGroundOffers.push(newOffer);
-    console.log('New offer added:', newOffer); // Untuk debugging di konsol browser
+    saveOffers(); // PENTING: Simpan ke localStorage setelah menambahkan
+    console.log('New offer added and saved:', newOffer); // Untuk debugging di konsol browser
     return newOffer;
 }
 
 // Fungsi untuk mendapatkan semua penawaran ampas kopi
 export function getAllCoffeeOffers() {
-    // Mengembalikan salinan array agar data asli tidak termodifikasi langsung dari luar
+    // Data sudah dimuat dari localStorage saat mockData.js diinisialisasi
     return [...coffeeGroundOffers];
 }
