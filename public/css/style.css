@@ -1049,7 +1049,7 @@ section {
     .ampas-cuans, .aktor-dibalik-g2g, .fitur-utama, .cara-kerja-g2g { padding: 2rem 0.5rem; }
     .ampas-cuans-title-box { position: absolute; left: -23%; }
     .ampas-cuans-label { padding: 16px 20px; border: 1px solid var(--color-primary-dark-teal); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; }
-    .ampas-cuans-cards .card-content { max-height: 180px; }
+    .ampas-cuans-cards .card-content { height: 200px; max-height: 200px; text-align: justify; }
     .ampas-cuans-cards .card-content h3 { font-size: 1rem; }
     .ampas-cuans-cards .card-content p { font-size: 0.7rem; }
     .footer-section h3 { font-size: 1.2rem; }
