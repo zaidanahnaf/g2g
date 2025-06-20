@@ -6,45 +6,122 @@
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('G2G MVP App Loaded! Initializing core landing page interactions...');
+    console.log('🚀 G2G MVP App Loaded!');
 
-    // --- 1. Navbar Scroll Transformation (Mengubah Warna & Ukuran) ---
-    // Navbar akan berubah (warna, ukuran, shadow) saat pengguna menggulir halaman ke bawah
-    const mainHeader = document.getElementById('main-header'); // Pastikan <header> punya ID "main-header"
-    // Pastikan navbar center dan right sesuai HTML terbaru Anda
-    const navLinksCenter = document.querySelectorAll('.navbar-center li a'); // Link di navbar-center
-    const navLinksRight = document.querySelectorAll('.navigation-links li a'); // Link di navbar-right
-    const logo = document.querySelector('.main-header .logo'); // Logo di navbar
-    const btnLogin = document.querySelector('.main-header .btn-login'); // Tombol Tawarkan Ampas
+    // Find elements
+    const navbar = document.querySelector(".navbar");
+    const header = document.querySelector(".main-header");
+    const logo = document.querySelector(".logo"); // Logo img element
+    
+    console.log('Elements found:', {
+        navbar: !!navbar,
+        header: !!header,
+        logo: !!logo
+    });
 
-    const scrollThreshold = 80; // Jarak scroll (dalam piksel) sebelum navbar berubah
-    const scrolledClass = 'scrolled'; // Kelas CSS untuk state navbar saat di-scroll
+    if (!navbar || !logo) {
+        return;
+    }
 
-    const applyNavbarStyle = () => {
-        if (!mainHeader) return; // Pastikan header ada
-
-        if (window.scrollY > scrollThreshold) {
-            mainHeader.classList.add(scrolledClass);
-            // Tambahkan kelas 'scrolled' ke link dan tombol login jika perlu styling terpisah
-            navLinksCenter.forEach(link => link.classList.add(scrolledClass));
-            navLinksRight.forEach(link => link.classList.add(scrolledClass));
-            if (logo) logo.classList.add(scrolledClass);
-            if (btnLogin) btnLogin.classList.add(scrolledClass);
-        } else {
-            mainHeader.classList.remove(scrolledClass);
-            // Hapus kelas 'scrolled'
-            navLinksCenter.forEach(link => link.classList.remove(scrolledClass));
-            navLinksRight.forEach(link => link.classList.remove(scrolledClass));
-            if (logo) logo.classList.remove(scrolledClass);
-            if (btnLogin) btnLogin.classList.remove(scrolledClass);
+    // Logo configuration
+    const logoConfig = {
+        default: {
+            src: 'assets/images/LogoG2G2.svg',
+            alt: 'G2G Logo'
+        },
+        scrolled: {
+            src: 'assets/images/Logo.png', 
+            alt: 'G2G Logo'
         }
     };
 
-    // Panggil saat scroll dan saat halaman pertama dimuat (untuk kasus refresh di tengah scroll)
-    window.addEventListener('scroll', applyNavbarStyle);
-    applyNavbarStyle(); // Panggil sekali saat load
+
+    let currentState = 'default';
+    const threshold = 50;
+
+    function updateLogo(state) {
+        if (currentState === state) return; // Avoid unnecessary changes
+        
+        const config = logoConfig[state];
+        if (!config) {
+            return;
+        }
+
+        // Add fade out effect
+        logo.style.opacity = '0';
+        logo.style.transform = 'scale(0.95)';
+
+        setTimeout(() => {
+            // Change logo source
+            logo.src = config.src;
+            logo.alt = config.alt;
+            
+            // Fade back in
+            logo.style.opacity = '1';
+            logo.style.transform = 'scale(1)';
+            
+            currentState = state;
+        }, 150); // Half of the transition duration
+    }
+
+    // Preload images for smooth transition
+    function preloadLogos() {
+        Object.values(logoConfig).forEach(config => {
+            const img = new Image();
+            img.src = config.src;
+        });
+    }
+
+    // Scroll handler
+    function handleScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        
+        if (scrollY > threshold) {
+            // Scrolled state
+            navbar.classList.add('scrolled');
+            if (header) header.classList.add('scrolled');
+            updateLogo('scrolled');
+            
+        } else {
+            // Default state
+            navbar.classList.remove('scrolled');
+            if (header) header.classList.remove('scrolled');
+            updateLogo('default');
+        }
+    }
+
+    // Optimized scroll listener
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Initialize
+    preloadLogos();
+    
+    // Set initial logo
+    if (logo.src === '' || logo.src.includes('placeholder')) {
+        logo.src = logoConfig.default.src;
+        logo.alt = logoConfig.default.alt;
+    }
+    
+    // Initial scroll check
+    handleScroll();
+
+    // Debug helper
+    window.testLogoSwap = function(state = 'scrolled') {
+        updateLogo(state);
+    };
+});
 
 
+document.addEventListener('DOMContentLoaded', () => {
     // --- 2. Smooth Scroll untuk Anchor Links ---
     // Membuat scroll menjadi mulus ketika mengklik link yang menuju section di halaman yang sama
     // Ini mencakup link di navbar dan tombol seperti "Mulai Gunakan G2G Sekarang"
@@ -119,4 +196,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     console.log('G2G MVP Landing Page interactions initialized.');
+});
+
+  const burger = document.getElementById('burger');
+  const navMenu = document.getElementById('navMenu');
+
+  burger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    burger.classList.toggle('open');
 });
