@@ -1053,6 +1053,7 @@ section {
     .ampas-cuans-cards .card-content h3 { font-size: 1rem; }
     .ampas-cuans-cards .card-content p { font-size: 0.7rem; }
     .footer-section h3 { font-size: 1.2rem; }
+    .footer-section .brand-tagline q { font-size: 0.8rem;}
     .footer-section p, .footer-section ul li a { font-size: 0.85rem; }
 }
 
